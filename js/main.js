@@ -1,3 +1,22 @@
+// Выпадающее меню
+(function(){
+	var link = $('.hamb'),
+		menu = $('.slide_menu'),
+		close = menu.find('.close'),
+		overlay = $('.overlay');
+
+	link.on('click', function() {
+		menu.toggleClass('open');
+		overlay.fadeIn(300);
+	});
+	overlay.add(close).on('click', function() {
+		overlay.fadeOut(300);
+		menu.removeClass('open');
+	})
+
+
+}());
+
 // Галерея в 5 блоке
 (function(){
 	var card = $('.section_5 .card'),
@@ -61,12 +80,16 @@
 }());
 
 
-// Процкнты
+// Процeнты
 (function(){
 	var col = $('.chart_block .column');
 	col.each(function(i, el){
 		var percent = $(el).data().percent;
-		el.style.height = percent + '%';
+		if (document.body.clientWidth > 992) {
+			el.style.height = percent + '%';
+		} else {
+			el.style.width = percent + '%';
+		}
 		el.innerHTML = percent + '%';
 	})
 
