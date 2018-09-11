@@ -210,8 +210,11 @@ $(function(){
 $(function(){
 	var media = $('.video_main')[0];
 	var videoBlock = $('.video_background');
-
-	media.play();
+	$(media).on('canplay', function(){
+		videoBlock.fadeIn(200);
+		media.play();
+	});
+	
 
 	$(media).on('abort error pause', function(){
 		media.play();
