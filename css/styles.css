@@ -147,6 +147,56 @@ header .logo {
 	opacity: .6;
 	cursor: pointer;
 }
+.preloader {
+	background-color: #fff;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
+.preloader .inner {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 100px;
+	height: 100px;
+	transform: translate(-50%, -50%);
+}
+.preloader .rotate {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	z-index: 10;
+	border: 2px solid #00a651;
+	border-top-color: transparent;
+	border-radius: 50%;
+	position: absolute;
+	animation-name: spin;
+	animation-duration: 600ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+}
+.preloader .progress {
+	line-height: 100px;
+	text-align: center;
+	position: relative;
+	z-index: 11;
+	font-family: "Playfair Display";
+	font-weight: bold;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 header .line {
 	background-color: #e8e8e8;
 	height: 38px;
@@ -206,6 +256,12 @@ section .title .text {
 	background-size: cover;
 	color: #fff;
 	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+.section_1 .container {
+	position: relative;
+	z-index: 2;
 }
 .section_1 .sec_1_logo {
 	margin-bottom: 100px;
@@ -224,7 +280,19 @@ section .title .text {
 	font-size: 27px;
 	margin-bottom: 25px;
 }
-
+.section_1 .video_background {
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+}
+.section_1 .video_main {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 /* Секция 2 */
 .section_2 {
 	padding: 100px 0;
@@ -443,13 +511,30 @@ section .title .text {
 }
 
 /*  Секция 6 */
-.section_6 {
-	padding: 150px 0;
-	background: url('../images/block_6/bg.jpg') no-repeat center;
-	-webkit-background-size: cover;
-	background-size: cover;
-}
 
+.section_6 {
+	position: relative;
+}
+.section_6 .text_block {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding-left: 130px;
+}
+.section_6 .video_about {
+	width: 100%;
+	display: block;
+}
+.section_6 .title {
+/*	padding: 20px;
+	background: rgba(0,0,0,.5);
+	border-radius: 15px;*/
+}
 .section_6 .title .h2 {
 	font-size: 50px;
 	text-transform: uppercase;
@@ -925,6 +1010,7 @@ section .title .text {
 	margin-top: 15px;
 	color: #3e3e40;
 	font-family: 'ProximaNovaBold';
+	position: relative;
 }
 .section_13 .postfix_options li::after,
 .section_13 .prefix_options li::before {
@@ -1868,7 +1954,162 @@ section .title .text {
 	top: 10px;
 	left: 0;
 }
+/* Секция 26 */
+.section_26 {
+	padding-top: 120px;
+}
+.section_26 .title {
+	margin-bottom: 0px;
+	text-align: center;
+}
+.section_26 .item {
+	position: relative;
+	padding: 70px 50px 70px;
+}
+.section_26 .item > img {
+	box-shadow: 12.997px 35.708px 70px 0px rgba(0, 0, 0, 0.14);
+}
 
+.section_26 .interactive {
+	position: relative;
+}
+.section_26 .container {
+	border-bottom: 1px solid #dcdcdc;
+	padding-bottom: 120px;
+}
+.section_26 .owl-prev,
+.section_26 .owl-next {
+	position: absolute;
+	top: 47%;
+	left: 55px;
+	width: 40px;
+	height: 60px;
+	font-size: 0;
+	background: url('../images/block_26/prev.png') no-repeat center;
+	transform: translateY(-50%);
+	transition: all .1s ease;
+	border-radius: 5px;
+}
+.section_26 .owl-prev:hover,
+.section_26 .owl-next:hover {
+	background-color: rgba(0,0,0,.5);
+}
+.section_26 .owl-next {
+	left: auto;
+	right: 55px;
+	background: url('../images/block_26/next.png') no-repeat center;
+}
+.section_26 .owl-dots {
+	text-align: center;
+	margin-top: 0px;
+}
+.section_26 .owl-dot  {
+	display: inline-block;
+}
+.section_26 .owl-dot span {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin: 10px;
+	border-radius: 50%;
+	background: #dddddd;
+}
+.section_26 .owl-dot.active span {
+	background: #41853f;
+}
+.section_26 .links a {
+	text-decoration: none;
+	font-size: 14px;
+	color: #3e3e40;
+	font-family: 'ProximaNovaBold';
+	display: block;
+	background: #fff;
+	text-transform: uppercase;
+	padding: 0px 20px;
+	padding-left: 40px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 15px;
+}
+
+
+.section_26 .links a::before {
+	content: "";
+	display: block;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: url(../images/block_16/i.png) no-repeat center rgb(150, 192, 61);
+	box-shadow: 1.433px 3.734px 9px 0px rgba(0, 0, 0, 0.25);
+	position: absolute;
+	left: 3px;
+	top: 2.5px;
+}
+.section_26 .links a:nth-child(1) {
+	position: absolute;
+	top: 12%;
+	left: 55%;
+}
+.section_26 .links a:nth-child(2) {
+	position: absolute;
+	top: 43%;
+	right: 8%;
+}
+.section_26 .links a:nth-child(3) {
+	position: absolute;
+	top: 63%;
+	right: 24%;
+}
+.section_26 .links a:nth-child(4) {
+	position: absolute;
+	top: 85%;
+	right: 29%;
+}
+.section_26 .links a:nth-child(5) {
+	position: absolute;
+	top: 80%;
+	left: 16%;
+}
+.section_26 .links a:nth-child(6) {
+	position: absolute;
+	top: 67%;
+	left: 10%;
+}
+.section_26 .links a:nth-child(7) {
+	position: absolute;
+	top: 28%;
+	left: 10%;
+}
+.section_26 .links a:nth-child(8) {
+	position: absolute;
+	top: 40%;
+	left: 43%;
+}
+.section_26 .fade {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .7;
+	cursor: pointer;
+}
+.section_26 .slide_modal {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	width: 80%;
+	height: 80%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+}
 /* Секция 27 */
 .section_27 {
 	padding: 120px 0;
@@ -2264,8 +2505,20 @@ footer .social a.tube {
 	.section_30 .name {
 		width: 170px;
 	}
+	.section_6 .text_block {
+		padding-left: 30px;
+	}
 }
 @media screen and (max-width: 1200px ) {
+	.section_6 .text_block {
+		display: block;
+		position: static;
+		width: 100%;
+		padding: 0 20px;
+	}
+	.section_6 .text_block .title .h2 {
+		color: #3e3e40;
+	}
 	.flex_row,
 	.flex-row {
 		flex-wrap: wrap;
@@ -2537,7 +2790,7 @@ footer .social a.tube {
 	.section_13 .title h2 {
 		color: #3e3e40;
 	}
-	.section_13 .income,
+/*	.section_13 .income,
 	.section_13 .consumption {
 		flex-wrap: wrap;
 		align-items: flex-start;
@@ -2549,6 +2802,34 @@ footer .social a.tube {
 		width: 100%;
 		height: 80px;
 		flex-direction: row;
+	}*/
+	.section_13 .income,
+	.section_13 .consumption {
+		justify-content: flex-start;
+		width: 500px;
+		margin: 0 auto;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	.section_13 .chart_options ul {
+		padding-left: 20px;
+	}
+	.section_13 .chart_options ul li {
+		text-align: left;
+		padding-left: 50px;
+		height: 30px;
+		line-height: 30px;
+		padding-right: 0;
+	}
+	.section_13 .postfix_options li::after,
+	.section_13 .prefix_options li::before {
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0;
+	}
+	.section_13 .income .chart_options {
+		order: 1;
 	}
 	.section_16 .panel {
 		margin-bottom: 15px;
@@ -2597,6 +2878,11 @@ footer .social a.tube {
 	}
 }
 @media screen and (max-width: 768px ) {
+	.section_13 .income,
+	.section_13 .consumption {
+		width: 100%;
+		flex-direction: column;	
+	}
 	section .h1, section h1 {
 		font-size: 40px !important;
 	}
@@ -2633,9 +2919,6 @@ footer .social a.tube {
 	.section_12 .cost_block {
 		padding: 30px 10px;
 	}
-	.section_13 .chart_columns .column {
-		font-size: 12px;
-	}
 	.section_18 .sep.sep_1::before {
 		left: 50%;
 	}
@@ -2644,6 +2927,25 @@ footer .social a.tube {
 	}
 	.section_5 .tabs_container {
 		padding-bottom: 50px;
+	}
+	.section_26 .links,
+	.section_26 .slide_modal {
+		display: none;
+	}
+	.section_26 .item {
+		margin: 30px 0;
+		padding: 0;
+	}
+	.section_26 .item img {
+		box-shadow: none;
+	}
+	.section_26 .owl-next {
+		right: 10px;
+		top: 45%;
+	}
+	.section_26 .owl-prev {
+		left: 10px;
+		top: 45%;
 	}
 }
 
@@ -2656,9 +2958,6 @@ footer .social a.tube {
 		}
 		header .line {
 			margin: 0 5px;
-		}
-		.section_13 .chart_columns .column {
-			font-size: 0px;	
 		}
 		.section_14 .range_card .card_body,
 		.section_14 .range_card .card_footer {

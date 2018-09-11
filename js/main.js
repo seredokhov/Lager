@@ -1,3 +1,30 @@
+// Прелоадер
+
+var images = document.images;
+var images_total_count = images.length;
+var images_loaded_count = 0;
+var progress = document.getElementById('progress');
+
+for (var i = 0; i < images_total_count; i++) {
+	image_clone = new Image();
+	image_clone.onload = loaded;
+	image_clone.onerror = loaded;
+	image_clone.src = images[i].src;
+
+}
+function loaded() {
+	images_loaded_count++;		
+	progress.innerHTML = ((( 100 / images_total_count ) * images_loaded_count ) << 0 ) + '%';
+
+	if ( images_loaded_count >= images_total_count) {
+		setTimeout(function () {
+			$(".preloader .inner").fadeOut();
+			$(".preloader").fadeOut("slow");
+		}, 500)
+	}
+
+} 
+
 // Выпадающее меню
 (function(){
 	var link = $('.hamb'),
@@ -85,11 +112,7 @@
 	var col = $('.chart_block .column');
 	col.each(function(i, el){
 		var percent = $(el).data().percent;
-		if (document.body.clientWidth > 992) {
-			el.style.height = percent + '%';
-		} else {
-			el.style.width = percent + '%';
-		}
+		el.style.height = percent + '%';
 		el.innerHTML = percent + '%';
 	})
 
@@ -112,13 +135,25 @@
 	    center: true,
 	    items:2,
 	    loop:true,
-	    margin:0,
+	    margin:0,	   
 	    dots: true,
 	    responsive:{
 	        600:{
 	            items:4
 	        }
 	    }
+	});
+}());
+
+// Секция 26 слайдер
+(function(){
+	$('.section_26 .owl-carousel').owlCarousel({
+	    center: true,
+	    items:1,
+	    loop:false,
+	    margin:0,
+	    nav: true,
+	    dots: true
 	});
 }());
 
@@ -132,3 +167,53 @@
 		$(this).siblings('ul').slideToggle(200);
 	});
 }());
+
+// Секция 26 всплывающие окна
+(function(){
+	var a = $('.section_26 .links a'),
+		overlay = $('.section_26 .fade'),
+		popupImg = $('.section_26 .slide_modal');
+
+	a.on('click', function(){
+		var id = $(this).data().id;
+		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '.jpg');
+		overlay.add(popupImg).fadeIn(200);
+		return false;
+	});
+	overlay.on('click', function(){
+		$(this).add(popupImg).fadeOut(200);
+	})
+}());
+
+// Удаление  br
+
+(function(){
+	var br = $('br');
+	if (document.body.clientWidth < 992) {
+		br.remove();
+	}
+}());
+
+
+// Секция 6 видео
+$(function(){
+	var media = $('.video_about')[0];
+	var videoBlock = $('.video_background');
+	media.play();
+	$(media).on('ended abort error pause', function(){
+		media.play();
+	});
+});
+
+// Секция 1 видео
+$(function(){
+	var media = $('.video_main')[0];
+	var videoBlock = $('.video_background');
+
+	media.play();
+	$(media).on('ended abort error pause', function(){
+		videoBlock.fadeOut(200, function(){
+			videoBlock.remove();
+		});
+	});
+});
