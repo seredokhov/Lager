@@ -205,13 +205,18 @@ $(function(){
 	});
 });
 
+
 // Секция 1 видео
 $(function(){
 	var media = $('.video_main')[0];
 	var videoBlock = $('.video_background');
 
 	media.play();
-	$(media).on('ended abort error pause', function(){
+
+	$(media).on('abort error pause', function(){
+		media.play();
+	});
+	$(media).on('ended', function(){
 		videoBlock.fadeOut(200, function(){
 			videoBlock.remove();
 		});
