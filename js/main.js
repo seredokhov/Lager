@@ -118,16 +118,85 @@ function loaded() {
 
 }());
 
+// Секция 12 акордион
+(function(){
+	var link = $('.section_12 .ul_list span'),
+		ul = $('.section_12 .acord_ul');
+
+	link.on('click', function(){
+		ul.not($(this).siblings()).slideUp(200);
+		$(this).siblings('ul').slideToggle(200);
+	});
+}());
+
 // Радиокнопки секция 14
 (function(){
-	var radio = $('.section_14 .check');
+	var radio = $('.section_14 .check'),
+		panel = $('.section_14 .change_panel'),
+		time = 0;
 
 	radio.on('change', function(){
+		var arr = [];
+
+		radio.each(function(i, el){
+			if($(el).prop('checked')) {
+				arr.push(parseInt($(el).val()));				
+			}			
+		});
+
+		switch(arr[0] + '-' + arr[1] ) {
+			case '5-50': time = '8 смен'; break;
+			case '5-75': time = '6 смен'; break;
+			case '5-100': time = '4 смены'; break;
+			case '7-50': time = '11 смен'; break;
+			case '7-75': time = '8 смен'; break;
+			case '7-100': time = '6 смен'; break;
+			case '10-50': time = '15 смен'; break;
+			case '10-75': time = '11 смен'; break;
+			case '10-100': time = '8 смен'; break;
+			case '12-50': time = '18 смен'; break;
+			case '12-75': time = '13 смен'; break;
+			case '12-100': time = '9 смен'; break;
+			case '15-50': time = '22 смены'; break;
+			case '15-75': time = '16 смен'; break;
+			case '15-100': time = '11 смен'; break;
+		}
+		
 		$(this).parent().prevAll().addClass('active');
 		$(this).parent().nextAll().removeClass('active');
+		panel.text(time);
 	})
 }());
 
+// Секция 16 всплывающие подсказки
+(function(){
+	var panel = $('.section_16 .panel'),
+		descr = $('.img_block .description'),
+		textBlock = descr.find('.block');
+
+
+	panel.on('click', function(){
+		if (document.body.clientWidth > 992) {
+			var txt = $(this).find('.hidden_text').html();
+			textBlock.html(txt);
+			descr.fadeIn(200);
+		} else {
+			$(this).find('.hidden_text').toggle();
+		}
+	});
+	
+}());
+
+// Секция 19 переворачивание карточек
+(function(){
+	var article = $('.section_19 .article');
+
+	article.on('click', function(){
+		article.not($(this)).removeClass('active');
+		$(this).addClass('active');
+	});
+
+}());
 
 // Секция 21 слайдер
 (function(){
@@ -152,9 +221,48 @@ function loaded() {
 	    items:1,
 	    loop:false,
 	    margin:0,
-	    nav: true,
+	    nav: false,
 	    dots: true
 	});
+}());
+
+
+// Секция 26 всплывающие окна
+(function(){
+	var a = $('.section_26 .links a'),
+		overlay = $('.section_26 .fade'),
+		popupImg = $('.section_26 .slide_modal'),
+		prev = popupImg.find('.prev'),
+		next = popupImg.find('.next');
+
+	a.on('click', function(){
+		var id = $(this).data().id;
+		var count = $('.slide_modal div[data-id="' + id + '"]').data().images;
+		var counter = 1;
+		//console.log(count);
+		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/1.jpg');
+		overlay.add(popupImg).fadeIn(200);
+		
+
+		prev.on('click', function(){
+			counter--;
+			if(counter < 1) counter = count;
+			popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg');
+		});
+		next.on('click', function(){
+			counter++;
+			if(counter > count) counter = 1;
+			popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg');
+		});
+
+		return false;
+
+	});
+
+	overlay.on('click', function(){
+		$(this).add(popupImg).fadeOut(200);
+	});
+
 }());
 
 // Секция 28 акордион
@@ -166,23 +274,6 @@ function loaded() {
 		ul.not($(this).siblings()).slideUp(200);
 		$(this).siblings('ul').slideToggle(200);
 	});
-}());
-
-// Секция 26 всплывающие окна
-(function(){
-	var a = $('.section_26 .links a'),
-		overlay = $('.section_26 .fade'),
-		popupImg = $('.section_26 .slide_modal');
-
-	a.on('click', function(){
-		var id = $(this).data().id;
-		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '.jpg');
-		overlay.add(popupImg).fadeIn(200);
-		return false;
-	});
-	overlay.on('click', function(){
-		$(this).add(popupImg).fadeOut(200);
-	})
 }());
 
 // Удаление  br
@@ -210,18 +301,101 @@ $(function(){
 $(function(){
 	var media = $('.video_main')[0];
 	var videoBlock = $('.video_background');
-	$(media).on('canplay', function(){
-		videoBlock.fadeIn(200);
-		media.play();
-	});
-	
 
-	$(media).on('abort error pause', function(){
-		media.play();
-	});
-	$(media).on('ended', function(){
-		videoBlock.fadeOut(200, function(){
-			videoBlock.remove();
+	if (document.body.clientWidth > 768) {	
+		$(media).on('canplay', function(){
+			videoBlock.fadeIn(200);
+			media.play();
 		});
-	});
+		
+
+		$(media).on('abort error pause', function(){
+			media.play();
+		});
+		$(media).on('ended', function(){
+			videoBlock.fadeOut(200, function(){
+				videoBlock.remove();
+			});
+		});
+	}
 });
+
+// Модальная форма
+(function(){
+	var link = $('.modal_link'),
+		modal = $('.modal_form'),
+		overlay = $('.modal_overlay'),
+		close = $('.modal_form .close'),
+		title = [
+			'Станьте партнером "Лагеря настоящих героев"',
+			'Узнайте подробнее о партнерской программе'
+		],
+		btnText = [
+			'Стать партнером',
+			'Узнать'
+		],
+		bg = [
+			'images/modal_bg_1.jpg',
+			'images/modal_bg_2.jpg'
+		];
+
+	link.on('click', function(){
+		var type = parseInt($(this).data().type) - 1;
+
+		modal.find('.modal_title').text(title[type]);
+		modal.find('.img_block').css({
+			'background': 'url("' + bg[type] + '") no-repeat center'
+		});
+		console.log(modal.find('.img_block'));
+
+		modal.find('.button').text(btnText[type]);
+
+
+
+		modal.fadeIn(200);
+		overlay.fadeIn(200);
+		return false;
+	});
+	overlay.add(close).on('click', function(){
+		$('.modal').fadeOut(200);
+		overlay.fadeOut(200);
+	})
+}());
+
+
+//AJAX отправка форм
+(function(){
+	 var form = $('form');
+
+	 form.on('submit', function() {
+
+		 var thisForm = $(this)[0],
+		     formdata = $(this).serializeArray(),
+		     jsonData = {},
+		     overlay = $('.overlay');
+		 $(formdata ).each(function(index, obj){
+		     jsonData[obj.name] = obj.value;                
+		 });      
+
+	     $.ajax({
+	         type: 'POST',
+	         url: '../send.php',
+	         data: JSON.stringify(jsonData)
+	     }).done(function(data) {
+	     	var succsessModal = $('.modal_success'),
+	     		overlay = $('.modal_overlay');
+
+	     	$('.modal_form').fadeOut(200, function(){
+	     		succsessModal.add(overlay).fadeIn(200);
+	     		overlay.add(succsessModal.find('.close')).on('click', function() {
+	     			overlay.add(succsessModal).fadeOut(200);
+	     		});
+	     	});
+	         thisForm.reset();
+
+	     });
+	     return false;
+	 });
+
+
+}());
