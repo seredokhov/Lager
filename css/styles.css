@@ -672,11 +672,14 @@ section .title .text {
 	font-family: 'ProximaNovaBold';
 	padding: 17px 10px;
 	box-shadow: 2.5px 4.33px 4.75px 0.25px rgba(0, 0, 0, 0.2);
+	transition: all .1s ease;
 }
 .button.red {
 	background: #d82c2c;
 }
-
+.button.red:hover {
+	background: #b72a2a;
+}
 .section_9 .mab_tabs{
 
 }
@@ -805,6 +808,9 @@ section .title .text {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+}
+.section_12 .link:hover {
+	color: #679c41;
 }
 .section_12 .link.active {
 	color: #2e7128;
@@ -1591,6 +1597,9 @@ section .title .text {
 	text-decoration: none;
 	display: inline-block;
 	border-bottom: 1px solid #2e7128;
+}
+.section_19 .article .more:hover {
+	color: #679c41;
 }
 
 /* секция 20 */

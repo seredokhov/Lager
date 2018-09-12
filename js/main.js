@@ -176,19 +176,22 @@ function loaded() {
 
 // Секция 16 всплывающие подсказки
 (function(){
-	var panel = $('.section_16 .panel'),
+	var panel = $('.section_16 .panel .content'),
 		descr = $('.img_block .description'),
 		textBlock = descr.find('.block');
 
 
-	panel.on('click', function(){
+	panel.on('mouseenter', function(){
 		if (document.body.clientWidth > 992) {
-			var txt = $(this).find('.hidden_text').html();
+			var txt = $(this).parent().find('.hidden_text').html();
 			textBlock.html(txt);
-			descr.fadeIn(200);
+			descr.fadeIn(100);
 		} else {
 			$(this).find('.hidden_text').toggle();
 		}
+	});
+	panel.on('mouseleave', function(){
+		descr.fadeOut(100);
 	});
 	
 }());
