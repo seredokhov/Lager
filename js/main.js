@@ -25,6 +25,14 @@ function loaded() {
 
 } 
 
+// Инициализация wow
+(function(){
+	// new WOW().init();
+	//var a = new WOW();
+	//console.log(a)
+}());
+
+
 // Выпадающее меню
 (function(){
 	var link = $('.hamb'),

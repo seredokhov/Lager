@@ -19,6 +19,9 @@
 
 	<!-- Google Fonts -->
 	<link rel="stylesheet" href="css/fonts.css">
+
+	<!-- Animate -->
+	<link rel="stylesheet" href="css/animate.css">
 	
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -1275,11 +1278,11 @@
 			</div>
 			<div class="descript">Сотрудник запускающей группы «Лагеря настоящих героев» прибывает на территорию партнера. В течение 3 месяцев выполняет функции управляющего, отлаживает работу лагеря и внедряет установленные стандарты.</div>
 			<div class="graph_block">
-				<div class="step step_1">
+				<div class="step step_1 wow fadeInLeft" data-wow-delay="0.1s">
 					<div class="num"></div>
 					<div class="name">«Лагерь настоящих героев»</div>
 				</div>
-				<div class="sep">
+				<div class="sep wow fadeInLeft" data-wow-delay="0.3s">
 					<div class="bottom_note">
 						<ul>
 							<li>Стандарты</li>
@@ -1287,11 +1290,11 @@
 						</ul>
 					</div>
 				</div>
-				<div class="step step_2">
+				<div class="step step_2 wow fadeInLeft" data-wow-delay="0.5s">
 					<div class="num"></div>
 					<div class="name">Управляющий</div>
 				</div>
-				<div class="sep">
+				<div class="sep wow fadeInLeft" data-wow-delay="0.7s">
 					<div class="top_note">
 						<ul>
 							<li>Стандарты</li>
@@ -1299,12 +1302,12 @@
 						</ul>
 					</div>
 				</div>
-				<div class="step step_3">
+				<div class="step step_3 wow fadeInLeft" data-wow-delay="1.0s">
 					<div class="num"></div>
 					<div class="name">Лагерь по технологиям «Лагеря настоящих героев» на территории Партнера</div>
 				</div>
-				<div class="dsep"></div>
-				<ul class="ul_step">
+				<div class="dsep wow fadeInLeft" data-wow-delay="1.2s"></div>
+				<ul class="ul_step wow fadeInLeft" data-wow-delay="1.5s">
 					<li>Продажи подтянуты</li>
 					<li>Система маркетинга отлажена</li>
 					<li>Учебные программы внедрены</li>
@@ -1610,9 +1613,12 @@
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/wow.min.js"></script>
 	<script src="js/main.js"></script>
+	<script>
+		new WOW().init();
+	</script>
 	
 </body>
 </html>
