@@ -32,15 +32,19 @@ function loaded() {
 	var link = $('.hamb'),
 		menu = $('.slide_menu'),
 		close = menu.find('.close'),
-		overlay = $('.overlay');
+		overlay = $('.overlay'),
+		innerLink = menu.find('a');
 
 	link.on('click', function() {
 		menu.toggleClass('open');
 		overlay.fadeIn(300);
 	});
-	overlay.add(close).on('click', function() {
+	overlay.add(close).add(innerLink).on('click', function() {
 		overlay.fadeOut(300);
 		menu.removeClass('open');
+	});
+	innerLink.on('click', function(){
+		
 	})
 
 
