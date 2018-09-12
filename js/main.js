@@ -25,12 +25,6 @@ function loaded() {
 
 } 
 
-// Инициализация wow
-(function(){
-	// new WOW().init();
-	//var a = new WOW();
-	//console.log(a)
-}());
 
 
 // Выпадающее меню
@@ -228,6 +222,7 @@ function loaded() {
 	    center: true,
 	    items:1,
 	    loop:false,
+	    mouseDrag: true,
 	    margin:0,
 	    nav: false,
 	    dots: true

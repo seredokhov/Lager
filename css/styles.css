@@ -2192,6 +2192,15 @@ section .title .text {
 	top: 50%;
 	transform: translate(-50%, -50%);
 }
+.section_26 .slide_modal .img_block {
+	height: 100%;
+	overflow: hidden;
+}
+.section_26 .slide_modal img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 /* Секция 27 */
 .section_27 {
 	padding: 120px 0;
