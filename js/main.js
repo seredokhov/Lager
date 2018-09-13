@@ -250,8 +250,15 @@ function loaded() {
 		var count = $('.slide_modal div[data-id="' + id + '"]').data().images;
 		var counter = 1;
 		//console.log(count);
-		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/1.jpg');
-		popupImg.find('img').on('load', function(){
+		var img = document.createElement("img");
+
+		popupImg.find('.img_block')[0].innerHTML = '';		
+
+		$(img).attr('src', 'images/block_26/popup_images/' + id + '/1.jpg');
+		
+		popupImg.find('.img_block').append(img);
+
+		$(img).on('load', function(){
 			overlay.add(popupImg).fadeIn(200);
 		})
 		
