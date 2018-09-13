@@ -251,7 +251,10 @@ function loaded() {
 		var counter = 1;
 		//console.log(count);
 		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/1.jpg');
-		overlay.add(popupImg).fadeIn(200);
+		popupImg.find('img').on('load', function(){
+			overlay.add(popupImg).fadeIn(200);
+		})
+		
 		
 
 		prev.on('click', function(){
@@ -354,7 +357,8 @@ $(function(){
 
 		modal.find('.modal_title').text(title[type]);
 		modal.find('.img_block').css({
-			'background': 'url("' + bg[type] + '") no-repeat center'
+			'background': 'url("' + bg[type] + '") no-repeat center',
+			'background-size': 'cover'
 		});
 		console.log(modal.find('.img_block'));
 
@@ -401,6 +405,7 @@ $(function(){
 	     			overlay.add(succsessModal).fadeOut(200);
 	     		});
 	     	});
+	     	console.log(data);
 	         thisForm.reset();
 
 	     });
