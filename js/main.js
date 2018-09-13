@@ -264,17 +264,19 @@ function loaded() {
 		
 		
 
-		prev.on('click', function(){
-			popupImg.fadeOut(200);
+		prev.on('click', function(){			
 			counter--;
 			if(counter < 1) counter = count;
-			popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').fadeIn(200);;
-
+			popupImg.fadeOut(300, function() {
+				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(300).fadeIn(300);
+			});
 		});
 		next.on('click', function(){
 			counter++;
 			if(counter > count) counter = 1;
-			popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg');
+			popupImg.fadeOut(300, function() {
+				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(300).fadeIn(300);
+			});
 		});
 
 		return false;
