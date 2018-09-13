@@ -2741,6 +2741,9 @@ footer .social a.tube {
 		width: 100%;
 		padding: 0 20px;
 	}
+	.section_6 .title {
+		background: none;
+	}
 	.section_6 .text_block .title .h2 {
 		color: #3e3e40;
 	}
