@@ -265,9 +265,11 @@ function loaded() {
 		
 
 		prev.on('click', function(){
+			popupImg.fadeOut(200);
 			counter--;
 			if(counter < 1) counter = count;
-			popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg');
+			popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').fadeIn(200);;
+
 		});
 		next.on('click', function(){
 			counter++;
