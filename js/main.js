@@ -267,15 +267,15 @@ function loaded() {
 		prev.on('click', function(){			
 			counter--;
 			if(counter < 1) counter = count;
-			popupImg.fadeOut(300, function() {
-				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(300).fadeIn(300);
+			popupImg.find('img').fadeOut(300, function() {
+				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
 			});
 		});
 		next.on('click', function(){
 			counter++;
 			if(counter > count) counter = 1;
-			popupImg.fadeOut(300, function() {
-				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(300).fadeIn(300);
+			popupImg.find('img').fadeOut(300, function() {
+				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
 			});
 		});
 
