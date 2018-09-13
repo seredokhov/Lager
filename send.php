@@ -21,15 +21,12 @@ if ($post['phone'] !='') {
 } else {
 	$contact = $post['email'];
 }
-
-echo print_r($post);
-die;
 	
 // E-MAIL
 $email = array(
 	'enable' 	=> true,
 	'from' 		=> 'Лагерь',
-	//'to'		=> 'fb@zolle.ru,2580022@bk.ru',
+	'to'		=> 'l.hero.franchise@paradigmadel.ru',
 	'subject'	=> 'Заявка: Лагерь',
 	'msg'		=> $html
 );
