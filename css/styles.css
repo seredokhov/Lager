@@ -360,8 +360,6 @@ section .title .text {
 	margin-bottom: 60px;
 }
 .section_4 {
-	background: url('../images/bg_3.jpg') no-repeat center #2e7128;
-	background-size: cover;
 	padding-top: 150px;
 	padding-bottom: 100px;
 }
