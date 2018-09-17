@@ -138,10 +138,62 @@
 // Радиокнопки секция 14
 (function(){
 	var radio = $('.section_14 .check'),
+		customRadio = $('.section_14 .custom_check'),
 		panel = $('.section_14 .change_panel'),
 		time = 0;
 
-	radio.on('change', function(){
+	customRadio.on('mousedown', function(){
+		var x = event.pageX;
+		var line = $(this).parent().siblings('.line');
+		var width = parseInt($(line[0]).width());		
+		var thisLabel = $(this).parent();
+		var nextLabel = $(this).parent().next().next();
+		var prevLabel = $(this).parent().prev().prev();
+		var pageX = 0;
+
+		thisLabel.find('input').prop('checked', true);
+		thisLabel.find('input').trigger('change');
+		$('.section_14').addClass('move');
+
+
+		$(document).on('mousemove', function() {
+			if (event.pageX > pageX) {				
+				if(event.pageX > (x + width)) {
+					x = event.pageX;					
+					nextLabel.find('input').prop('checked', true);
+					nextLabel.find('input').trigger('change');
+					thisLabel = nextLabel;
+					prevLabel = thisLabel.prev().prev();
+					nextLabel = thisLabel.next().next();
+					if(!nextLabel[0]) {
+						nextLabel = thisLabel;
+					}
+				}
+			} else if (event.pageX < pageX) {
+				if(event.pageX < (x - width)) {
+					x = event.pageX;
+					prevLabel.find('input').prop('checked', true);
+					prevLabel.find('input').trigger('change');
+					thisLabel = prevLabel;
+					prevLabel = thisLabel.prev().prev();
+					nextLabel = thisLabel.next().next();
+					if(!prevLabel[0]) {
+						prevLabel = thisLabel;
+					}
+				}
+			} else {
+				return false;
+			}
+			pageX = event.pageX;
+		});
+	});
+
+	$(document).on('mouseup', function(){
+		$('.section_14').removeClass('move');
+		$(document).off('mousemove');
+	});
+
+	radio.on('change input', function(){
 		var arr = [];
 
 		radio.each(function(i, el){
@@ -202,7 +254,7 @@
 
 	article.on('click', function(){
 		article.not($(this)).removeClass('active');
-		$(this).addClass('active');
+		$(this).toggleClass('active');
 	});
 
 }());
@@ -231,7 +283,7 @@
 	    loop:false,
 	    mouseDrag: true,
 	    margin:0,
-	    nav: false,
+	    nav: true,
 	    dots: true
 	});
 }());
@@ -241,14 +293,12 @@
 (function(){
 	var a = $('.section_26 .links a'),
 		overlay = $('.section_26 .fade'),
-		popupImg = $('.section_26 .slide_modal'),
-		prev = popupImg.find('.prev'),
-		next = popupImg.find('.next');
+		close = overlay.find('close_btn'),
+		popupImg = $('.section_26 .slide_modal');
 
 	a.on('click', function(){
 		var id = $(this).data().id;
-		var count = $('.slide_modal div[data-id="' + id + '"]').data().images;
-		var counter = 1;
+
 		//console.log(count);
 		var img = document.createElement("img");
 
@@ -264,27 +314,27 @@
 		
 		
 
-		prev.on('click', function(){			
-			counter--;
-			if(counter < 1) counter = count;
-			popupImg.find('img').fadeOut(300, function() {
-				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
-			});
-		});
-		next.on('click', function(){
-			counter++;
-			if(counter > count) counter = 1;
-			popupImg.find('img').fadeOut(300, function() {
-				popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
-			});
-		});
+		// prev.on('click', function(){			
+		// 	counter--;
+		// 	if(counter < 1) counter = count;
+		// 	popupImg.find('img').fadeOut(300, function() {
+		// 		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
+		// 	});
+		// });
+		// next.on('click', function(){
+		// 	counter++;
+		// 	if(counter > count) counter = 1;
+		// 	popupImg.find('img').fadeOut(300, function() {
+		// 		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
+		// 	});
+		// });
 
 		return false;
 
 	});
 
-	overlay.on('click', function(){
-		$(this).add(popupImg).fadeOut(200);
+	overlay.add(close).on('click', function(){
+		overlay.add(popupImg).fadeOut(200);
 	});
 
 }());
@@ -351,7 +401,7 @@ $(function(){
 		overlay = $('.modal_overlay'),
 		close = $('.modal_form .close'),
 		title = [
-			'Станьте партнером "Лагеря настоящих героев"',
+			'Станьте партнером<br> «Лагеря настоящих героев»',
 			'Узнайте подробнее о партнерской программе'
 		],
 		btnText = [
@@ -366,22 +416,22 @@ $(function(){
 	link.on('click', function(){
 		var type = parseInt($(this).data().type) - 1;
 
-		modal.find('.modal_title').text(title[type]);
+		modal.find('.modal_title').html(title[type]);
 		modal.find('.img_block').css({
 			'background': 'url("' + bg[type] + '") no-repeat center',
 			'background-size': 'cover'
 		});
-		console.log(modal.find('.img_block'));
 
-		modal.find('.button').text(btnText[type]);
-
+		modal.find('.button').html(btnText[type]);
 
 
+		$('body').addClass('no_scroll');
 		modal.fadeIn(200);
 		overlay.fadeIn(200);
 		return false;
 	});
 	overlay.add(close).on('click', function(){
+		$('body').removeClass('no_scroll');
 		$('.modal').fadeOut(200);
 		overlay.fadeOut(200);
 	})
@@ -425,3 +475,18 @@ $(function(){
 
 
 }());
+
+
+/* Увеличение BG */
+$(function() {
+	var bg = $(".animate_bg");
+
+		bg.viewportChecker({
+			classToAdd : 'active',
+			callbackFunction: function(elem, action){
+				// countAnimate(elem);
+				console.log('TTTT')
+			}
+		})
+
+});
