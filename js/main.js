@@ -233,17 +233,23 @@
 		textBlock = descr.find('.block');
 
 
-	panel.on('mouseenter', function(){
+	panel.on('click', function(){
 		if (document.body.clientWidth > 992) {
 			var txt = $(this).parent().find('.hidden_text').html();
+
 			textBlock.html(txt);
-			descr.fadeIn(100);
+
+			if( $(this).parent().hasClass('this') ) {
+				descr.fadeOut(100);
+			} else {
+				panel.not($(this).parent()).parent().removeClass('this')
+				$(this).parent().addClass('this');
+				descr.fadeIn(100);
+			}
+			
 		} else {
 			$(this).find('.hidden_text').toggle();
 		}
-	});
-	panel.on('mouseleave', function(){
-		descr.fadeOut(100);
 	});
 	
 }());
