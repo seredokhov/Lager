@@ -241,12 +241,13 @@
 
 			if( $(this).parent().hasClass('this') ) {
 				descr.fadeOut(100);
+				panel.parent().removeClass('this');
 			} else {
-				panel.not($(this).parent()).parent().removeClass('this')
+				panel.parent().removeClass('this');
 				$(this).parent().addClass('this');
 				descr.fadeIn(100);
 			}
-			
+
 		} else {
 			$(this).find('.hidden_text').toggle();
 		}
