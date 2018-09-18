@@ -247,7 +247,6 @@
 				$(this).parent().addClass('this');
 				descr.fadeIn(100);
 			}
-
 		} else {
 			$(this).find('.hidden_text').toggle();
 		}
