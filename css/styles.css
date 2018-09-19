@@ -1701,15 +1701,15 @@ section .title .text {
 	display: none;
 } 
 .section_20 .article:nth-child(1) .img_block {
-	background: url('../images/block_20/1.jpg') no-repeat center;
+	background: url('../images/block_20/1.jpg') no-repeat center 0px;
 	background-size: cover;
 }
 .section_20 .article:nth-child(2) .img_block {
-	background: url('../images/block_20/2.jpg') no-repeat center;
+	background: url('../images/block_20/2.jpg') no-repeat center 0px;
 	background-size: cover;
 }
 .section_20 .article:nth-child(3) .img_block {
-	background: url('../images/block_20/3.jpg') no-repeat center;
+	background: url('../images/block_20/3.jpg') no-repeat center 0px;
 	background-size: cover;
 }
 .section_20 .article .name {
@@ -3410,7 +3410,8 @@ footer .social a.tube {
 		.section_18 .sep.sep_2::after {
 			display: none;
 		}
-		.section_8 .panel {
+		.section_8 .panel,
+		.section_17 .card {
 			padding: 50px 25px;
 		}
 		.section_15 {
@@ -3418,11 +3419,11 @@ footer .social a.tube {
 			background-size: normal;
 		}
 		.section_24 {
-			background: url(../images/block_24/bg.jpg) no-repeat -1443px 0px;
+			background: url(../images/block_24/bg.jpg) no-repeat -1515px 0px;
 			background-size: cover;
 		}
 		.section_31 {
-			background: url(../images/block_31/bgg.jpg) no-repeat 0px 0px;
+			background: url(../images/block_31/bgg.jpg) no-repeat -235px 0px;
 			background-size: cover;
 		}
 }
