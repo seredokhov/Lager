@@ -226,18 +226,18 @@
 	})
 }());
 
+
 // Секция 16 всплывающие подсказки
 (function(){
 	var panel = $('.section_16 .panel .content'),
 		descr = $('.img_block .description'),
-		textBlock = descr.find('.block');
+		front = descr.find('.front'),
+		back = descr.find('.back');
 
 
 	panel.on('click', function(){
 		if (document.body.clientWidth > 992) {
 			var txt = $(this).parent().find('.hidden_text').html();
-
-			textBlock.html(txt);
 
 			if( $(this).parent().hasClass('this') ) {
 				descr.fadeOut(100);
@@ -245,7 +245,22 @@
 			} else {
 				panel.parent().removeClass('this');
 				$(this).parent().addClass('this');
-				descr.fadeIn(100);
+
+				if (descr.css('display') == 'none') {
+					descr.removeClass('rotated');
+					front.html(txt);
+					back.html('');
+					descr.fadeIn(100);
+				} else {
+
+					if( descr.hasClass('rotated') ) {
+						front.html(txt);
+						descr.removeClass('rotated');
+					} else {
+						back.html(txt);
+						descr.addClass('rotated');
+					}
+				}
 			}
 		} else {
 			$(this).parent().find('.hidden_text').toggle();
