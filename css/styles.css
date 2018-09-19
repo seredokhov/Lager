@@ -191,6 +191,14 @@ header .logo {
 	font-size: 18px;
 	text-transform: uppercase;
 }
+.mobile_img  {
+	margin-top: 20px;
+}
+.mobile_img img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+}
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -2101,6 +2109,10 @@ section .title .text {
 	top: 10px;
 	left: 0;
 }
+.section_25 .mob_sep,
+.section_25 .mob_dsep {
+	display: none;
+}
 /* Секция 26 */
 .section_26 {
 	padding-top: 120px;
@@ -2555,11 +2567,14 @@ section .title .text {
 	line-height: 26px;
 	text-align: center;
 }
+.section_30 a {
+	text-decoration: none;
+}
 /* Секция 31 */
 .section_31 {
 	padding: 120px 0;
-/*	background: url('../images/block_31/bgg.jpg') no-repeat center 0px;
-	background-size: cover;*/
+	background: url('../images/block_31/bgg.jpg') no-repeat center 0px;
+	background-size: cover;
 	position: relative;
 	overflow: hidden;
 }
@@ -2820,7 +2835,7 @@ footer .social a.tube {
 /* Медиа запросы */
 @media screen and (max-width: 1450px ) {
 	body {
-		/*overflow-x: hidden;*/
+		overflow-x: hidden;
 	}
 	.large_container,
 	.container {
@@ -2989,6 +3004,17 @@ footer .social a.tube {
 		height: auto;
 		margin-bottom: 30px;
 	}
+	.section_25 .mob_sep,
+	.section_25 .mob_dsep {
+		display: block;
+		width: 145px;
+		height: 145px;
+		transform: rotate(90deg);
+		background: url(../images/block_25/sep.png) no-repeat center;
+	}
+	.section_25 .mob_dsep {
+		background: url(../images/block_25/dsep.png) no-repeat center;
+	}
 	.section_25 .ul_step {
 		width: 350px;
 		background: #fff;
@@ -3022,6 +3048,11 @@ footer .social a.tube {
 	.modal_form .form_block {
 		width: 100%;
 	}
+	.section_25 .graph_block .absolute_text {
+		position: static;
+		margin-top: 30px;
+		text-align: center;
+	}
 }
 @media screen and (max-width: 992px ) {
 	.section_3,
@@ -3052,7 +3083,13 @@ footer .social a.tube {
 	.section_8,
 	.section_30,
 	section {
-		padding: 50px 0 !important;
+		padding: 25px 0 !important;
+	}
+	.section_3 {
+		padding-bottom: 5px !important;
+	}
+	.section_3 .title {
+		margin-bottom: 30px;
 	}
 	.section_3 .title h2,
 	.section_3 .title .h2,
@@ -3203,6 +3240,34 @@ footer .social a.tube {
 	.section_19 .back {
 		transition: 0s;
 	}
+	.section_3 .animate_bg {
+		display: none;
+	}
+	.section_5 .title .h2,
+	.section_5 .title h2,
+	.section_7 .title .h2 {
+		margin-bottom: 25px;
+	}
+	.section_5 .tabs_container,
+	.section_13 .chart_block,
+	.section_18 .flex_row,
+	.section_26 .container {
+		padding-bottom: 0 !important;
+	}
+	.section_27 .title,
+	.section_30 .title,
+	.section_32 .title {
+		margin: 0;
+	}
+	.section_6 {
+		padding: 15px 0 !important;
+	}
+	.animate_bg {
+		display: none;
+	}
+	.section_17 .bottom .title {
+		margin-top: 20px;
+	}
 }
 @media screen and (max-width: 768px ) {
 
@@ -3239,8 +3304,7 @@ footer .social a.tube {
 	}
 	.section_12 .tab_controls {
 		padding: 0 10px;
-		justify-content: space-around;
-		flex-wrap: wrap;
+		display: block;
 	}
 	.section_12 .link {
 		margin: 10px;
@@ -3289,14 +3353,30 @@ footer .social a.tube {
 	.modal .close::after {
 		background-color: #dadada !important;
 	}
+	.section_1 .sec_1_logo {
+		width: 200px;
+	}
+	.section_10 .title .text {
+		font-size: 25px;
+	}
+	.section_24 .sep {
+	    display: block;
+	    width: 145px;
+	    height: 145px;
+	    flex-grow: 0;
+	    transform: rotate(90deg);
+	}
 }
 
 @media screen and (max-width: 500px ) {
 		section .h1, section h1 {
-			font-size: 35px !important;
+			font-size: 30px !important;
 		}
 		section .h2, section h2 {
-			font-size: 30px !important;
+			font-size: 27px !important;
+		}
+		.section_1 .text {
+			font-size: 20px;
 		}
 		header .line {
 			margin: 0 5px;
@@ -3313,6 +3393,21 @@ footer .social a.tube {
 		}
 		.section_18 .sep.sep_2::after {
 			display: none;
+		}
+		.section_8 .panel {
+			padding: 50px 25px;
+		}
+		.section_15 {
+			background: url(../images/block_15/bg.jpg) no-repeat -964px -160px;
+			background-size: normal;
+		}
+		.section_24 {
+			background: url(../images/block_24/bg.jpg) no-repeat -1443px 0px;
+			background-size: cover;
+		}
+		.section_31 {
+			background: url(../images/block_31/bgg.jpg) no-repeat 0px 0px;
+			background-size: cover;
 		}
 }
 @media screen and (max-width: 400px ){

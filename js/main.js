@@ -248,10 +248,9 @@
 				descr.fadeIn(100);
 			}
 		} else {
-			$(this).find('.hidden_text').toggle();
+			$(this).parent().find('.hidden_text').toggle();
 		}
-	});
-	
+	});	
 }());
 
 // Секция 19 переворачивание карточек
@@ -274,8 +273,14 @@
 	    margin:0,	   
 	    dots: true,
 	    responsive:{
+	    	1000:{
+	    	    items:4
+	    	},
 	        600:{
-	            items:4
+	            items:3
+	        },
+	        0:{
+	        	items:1
 	        }
 	    }
 	});
