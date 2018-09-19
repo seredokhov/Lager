@@ -3382,6 +3382,18 @@ footer .social a.tube {
 	    flex-grow: 0;
 	    transform: rotate(90deg);
 	}
+	.section_15 {
+		background: url(../images/block_15/bg.jpg) no-repeat 62% -160px;
+		background-size: inherit;
+	}
+	.section_24 {
+		background: url(../images/block_24/bg.jpg) no-repeat 39% 0px;
+		background-size: cover;
+	}
+	.section_31 {
+		background: url(../images/block_31/bgg.jpg) no-repeat 22% 0px;
+		background-size: cover;
+	}
 }
 
 @media screen and (max-width: 500px ) {
@@ -3413,18 +3425,6 @@ footer .social a.tube {
 		.section_8 .panel,
 		.section_17 .card {
 			padding: 50px 25px;
-		}
-		.section_15 {
-			background: url(../images/block_15/bg.jpg) no-repeat -964px -160px;
-			background-size: normal;
-		}
-		.section_24 {
-			background: url(../images/block_24/bg.jpg) no-repeat -1515px 0px;
-			background-size: cover;
-		}
-		.section_31 {
-			background: url(../images/block_31/bgg.jpg) no-repeat -235px 0px;
-			background-size: cover;
 		}
 }
 @media screen and (max-width: 400px ){
