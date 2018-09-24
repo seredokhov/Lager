@@ -289,10 +289,10 @@
 	    dots: true,
 	    responsive:{
 	    	1000:{
-	    	    items:4
+	    	    items:2
 	    	},
 	        600:{
-	            items:3
+	            items:2
 	        },
 	        0:{
 	        	items:1
@@ -409,13 +409,13 @@ $(function(){
 		});
 		
 
-		$(media).on('abort error pause', function(){
-			media.play();
+		$(media).on('abort error pause', function(){			
+			// videoBlock.fadeOut(200, function(){
+			// 	videoBlock.remove();
+			// });
 		});
 		$(media).on('ended', function(){
-			videoBlock.fadeOut(200, function(){
-				videoBlock.remove();
-			});
+			media.play();
 		});
 	}
 });
@@ -435,7 +435,7 @@ $(function(){
 			'Узнать'
 		],
 		bg = [
-			'images/modal_bg_1.jpg',
+			'images/modal_bg_11.jpg',
 			'images/modal_bg_2.jpg'
 		];
 
@@ -515,4 +515,34 @@ $(function() {
 			}
 		})
 
+});
+
+/* Деактивация ссылок */
+$(function(){
+	if (document.body.clientWidth < 768) {
+		var link = $('.section_32 a');
+		link.on('click', function() {
+			return false;
+		});
+	}
+});
+
+// Плавающий бургер
+
+$(function(){
+	if (document.body.clientWidth < 768) {
+		var humb = $('.fixed_humb');
+		var offset = $('header').height() + 20;
+
+		$(window).scroll(function (){
+		    var windowScroll = $(window).scrollTop();
+
+		    if (windowScroll > offset) {
+		        humb.addClass("show");
+		    } else {
+		        humb.removeClass("show");
+		    }
+		});
+
+	}
 });

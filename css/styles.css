@@ -11,6 +11,7 @@ body{
 	color: #222;
 	font-family: 'ProximaNovaRegular';
 	line-height: normal;
+	padding-top: 70px;
 }
 ul {
 	padding: 0;
@@ -30,9 +31,14 @@ input {
 }
 /* Шапка */
 header  {
-	min-height: 70px;
 	background: #fff;
-	padding: 10px 0;	
+	padding: 10px 0;
+	position: fixed;
+	z-index: 5;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 70px;
 }
 header .flex-row {
 	display: flex;
@@ -60,6 +66,19 @@ header .logo {
 	left: 0;
 	top: 50%;
 	transform: translateY(-50%);
+}
+.fixed_humb {
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 5;
+	background: #fff;
+	padding: 10px;
+	box-shadow: -2px 3px 4.75px 0.25px rgba(0, 0, 0, 0.2);
+}
+.fixed_humb.show {
+	display: block;
 }
 .hamb::before {
 	content: "";
@@ -292,7 +311,7 @@ section .title .text {
 }
 .section_1 .flex-row {
 	display: flex;
-	flex-direction: column;
+/*	flex-direction: column;*/
 	align-items: center;
 	justify-content: center;
 }
@@ -324,8 +343,8 @@ section .title .text {
 }
 .section_1 .video_main {
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
+/*	height: 100%;
+	object-fit: cover;*/
 }
 /* Секция 2 */
 .section_2 {
@@ -554,7 +573,6 @@ section .title .text {
 /*  Секция 6 */
 
 .section_6 {
-	position: relative;
 	position: relative;
 }
 .section_6 .text_block {
@@ -840,7 +858,6 @@ section .title .text {
 	box-shadow: 12.997px 35.708px 70px 0px rgba(0, 0, 0, 0.14);
 }
 .section_12 .tab_controls {
-	min-height: 80px;
 	border-bottom: 1px solid #e8e8e8;
 	display: flex;
 	padding: 0px 120px;
@@ -854,6 +871,7 @@ section .title .text {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	height: 80px;
 }
 .section_12 .link:hover {
 	color: #679c41;
@@ -1226,7 +1244,7 @@ section .title .text {
 /* Секция 15 */
 .section_15 {
 	padding: 120px 0;
-	background: url('../images/block_15/bg.jpg') no-repeat center 0px;
+	background: url('../images/block_15/bg.jpg') no-repeat 100% 0px;
 	background-size: cover;
 }
 .section_15 .title h2,
@@ -1767,8 +1785,15 @@ section .title .text {
 	color: #5a5a5d;
 }
 .section_20 .article ul li::before {
-	content: "-";
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
 	margin-right: 5px;
+	border-radius: 50%;
+	width: 5px;
+	height: 5px;
+	background: #2e7128;
+	top: 9px;
 }
 
 /* Секция 21 */
@@ -1819,7 +1844,7 @@ section .title .text {
 	overflow: hidden;
 }
 .section_22 .animate_bg {
-	background: url('../images/block_22/bg.jpg') no-repeat 115% 0;
+	background: url('../images/block_22/bg.jpg') no-repeat 130% 30px;
 }
 .section_22 .title {
 	margin-bottom: 50px;
@@ -1988,7 +2013,7 @@ section .title .text {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	min-height: 560px;
+	height: 700px;
 	width: 1000px;
 	margin: 0 auto;
 	margin-bottom: 80px;
@@ -2060,9 +2085,9 @@ section .title .text {
 }
 .section_25 .sep .top_note {
 	position: absolute;
-	bottom: 190px;
+	bottom: 117px;
 	left: 50%;
-	width: 260px;
+	width: 315px;
 	background: #fff;
 	padding: 20px;
 	box-shadow: 14.365px 39.467px 62px 0px rgba(0, 0, 0, 0.1);
@@ -2899,6 +2924,14 @@ footer .social a.tube {
 	.section_6 .text_block {
 		padding-left: 30px;
 	}
+	.section_22 .animate_bg {
+	    background: url(../images/block_22/bg.jpg) no-repeat 170% 30px;
+	}
+}
+@media screen and (max-width: 1300px ) {
+	.section_22 .animate_bg {
+	    background: url(../images/block_22/bg.jpg) no-repeat 200% 30px;
+	}
 }
 @media screen and (max-width: 1200px ) {
 	.section_6 .text_block {
@@ -3033,6 +3066,7 @@ footer .social a.tube {
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
+		height: auto;
 	}
 	.section_25 .step .name,
 	.section_25 .sep .top_note,
@@ -3054,13 +3088,13 @@ footer .social a.tube {
 	.section_25 .mob_sep,
 	.section_25 .mob_dsep {
 		display: block;
-		width: 145px;
-		height: 145px;
+		width: 50px;
+		height: 50px;
 		transform: rotate(90deg);
-		background: url(../images/block_25/sep.png) no-repeat center;
+		background: url(../images/block_25/sep.png) no-repeat 100% center;
 	}
 	.section_25 .mob_dsep {
-		background: url(../images/block_25/dsep.png) no-repeat center;
+		background: url(../images/block_25/dsep.png) no-repeat 100% center;
 	}
 	.section_25 .ul_step {
 		width: 350px;
@@ -3083,7 +3117,7 @@ footer .social a.tube {
 	}
 	.section_32 .flex-row {
 		flex-wrap: wrap;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 	.modal_form {
 		width: 90%;
@@ -3099,6 +3133,9 @@ footer .social a.tube {
 		position: static;
 		margin-top: 30px;
 		text-align: center;
+	}
+	.animate_bg {
+	    display: none;
 	}
 }
 @media screen and (max-width: 992px ) {
@@ -3127,10 +3164,15 @@ footer .social a.tube {
 	.section_14 .title {
 		margin-bottom: 30px;
 	}
-	.section_8,
 	.section_30,
 	section {
 		padding: 25px 0 !important;
+	}
+	.section_8 {
+		padding: 0 !important;
+	}
+	.section_15 {
+		padding: 50px 0 !important;
 	}
 	.section_3 {
 		padding-bottom: 5px !important;
@@ -3312,9 +3354,6 @@ footer .social a.tube {
 	.section_6 {
 		padding: 15px 0 !important;
 	}
-	.animate_bg {
-		display: none;
-	}
 	.section_17 .bottom .title {
 		margin-top: 20px;
 	}
@@ -3418,10 +3457,11 @@ footer .social a.tube {
 	}
 	.section_24 .sep {
 	    display: block;
-	    width: 145px;
-	    height: 145px;
+	    width: 50px;
+	    height: 50px;
 	    flex-grow: 0;
 	    transform: rotate(90deg);
+	    background: url(../images/block_24/arrow.png) no-repeat 100% center;
 	}
 	.section_15 {
 		background: url(../images/block_15/bg.jpg) no-repeat 62% -160px;
@@ -3434,6 +3474,15 @@ footer .social a.tube {
 	.section_31 {
 		background: url(../images/block_31/bgg.jpg) no-repeat 22% 0px;
 		background-size: cover;
+	}
+	.section_8 .mobile_img {
+		margin-top: 0;
+	}
+	.section_32 .item:hover {
+		background-position-y: -4px;
+	}
+	.section_29 .flex_row {
+		margin-bottom: 20px;
 	}
 }
 
@@ -3466,6 +3515,34 @@ footer .social a.tube {
 		.section_8 .panel,
 		.section_17 .card {
 			padding: 50px 25px;
+		}
+		header {
+			position: static;
+			height: auto;
+		}
+		body {
+			padding-top: 0;
+		}
+		.section_25 .ul_step {
+			width: auto;
+		}
+		.section_27 .content_block .icons {
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+		.modal_form form {
+			padding: 20px 15px;
+		}
+		.section_20 .article,
+		.section_29 .item,
+		.section_7 .article {
+			width: 100%;
+		}
+		.section_20 .article .img_block::after {
+			display: none;
+		}
+		.section_20 .article ul {
+			text-align: left;
 		}
 }
 @media screen and (max-width: 400px ){
