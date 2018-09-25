@@ -29,6 +29,9 @@ input {
 .no_scroll {
 	overflow: hidden;
 }
+.adaptive_carousel {
+	display: block;
+}
 /* Шапка */
 header  {
 	background: #fff;
@@ -343,8 +346,8 @@ section .title .text {
 }
 .section_1 .video_main {
 	width: 100%;
-/*	height: 100%;
-	object-fit: cover;*/
+	height: 100%;
+	object-fit: cover;
 }
 /* Секция 2 */
 .section_2 {
@@ -569,7 +572,11 @@ section .title .text {
 	line-height: 24px;
 	margin-bottom: 20px;
 }
-
+.section_5 .mobile_text {
+	display: none;
+	position: relative;
+	z-index: 2;
+}
 /*  Секция 6 */
 
 .section_6 {
@@ -631,13 +638,13 @@ section .title .text {
 	background-size: cover;
 	margin-bottom: 40px;
 }
-.section_7 .article:nth-child(1) .img_block {
+.section_7 .article_1 .img_block {
 	background: url('../images/block_7/1.jpg') no-repeat;
 }
-.section_7 .article:nth-child(2) .img_block {
+.section_7 .article_2 .img_block {
 	background: url('../images/block_7/2.jpg') no-repeat;
 }
-.section_7 .article:nth-child(3) .img_block {
+.section_7 .article_3 .img_block {
 	background: url('../images/block_7/3.jpg') no-repeat;
 }
 
@@ -1755,15 +1762,15 @@ section .title .text {
 .section_20 .article:last-of-type .img_block::after {
 	display: none;
 } 
-.section_20 .article:nth-child(1) .img_block {
+.section_20 .article_1 .img_block {
 	background: url('../images/block_20/1.jpg') no-repeat center 0px;
 	background-size: cover;
 }
-.section_20 .article:nth-child(2) .img_block {
+.section_20 .article_2 .img_block {
 	background: url('../images/block_20/2.jpg') no-repeat center 0px;
 	background-size: cover;
 }
-.section_20 .article:nth-child(3) .img_block {
+.section_20 .article_3 .img_block {
 	background: url('../images/block_20/3.jpg') no-repeat center 0px;
 	background-size: cover;
 }
@@ -3206,13 +3213,40 @@ footer .social a.tube {
 		max-width: 100%;
 		display: flex;
 		padding: 0;
-		padding-bottom: 40px;
 	}
-	.section_5 .card_footer {
-		height: 40px;
+	.section_5 .card_footer,
+	.section_5 .card_text {
+		display: none;
 	}
 	.section_5 .card .img_block {
 		display: none;
+	}
+	.section_5 .card_body {
+		width: 100%;
+		padding: 10px 20px;
+	}
+	.section_5 .card_title {
+		font-size: 20px;
+	}
+	.section_5 .card.active .card_title {
+		color: #2e7128;
+	}
+	.section_5 .card_title {
+		margin-bottom: 0;
+	}
+	.section_5 .mobile_text {
+		display: block;
+		padding: 0 15px;
+		font-size: 18px;
+		color: #3e3e40;
+		line-height: 24px;
+		margin-bottom: 20px;
+	}
+	.section_5 .tab {
+		/*padding: 0 15px;*/
+	}
+	.section_5 .tabs_container {
+		padding-top: 90px;
 	}
 	.section_7 .article .img_block {
 		background-position: center !important;
@@ -3302,6 +3336,79 @@ footer .social a.tube {
 		width: 70%;
 		text-align: center;
 		margin-bottom: 30px;
+	}
+	.section_19 .article {
+		margin: 0 auto;	
+		
+	}
+	.section_19 .front,
+	.section_19 .back {
+		padding: 40px;
+	}
+	.adaptive_carousel .owl-prev,
+	.adaptive_carousel .owl-next {
+		position: absolute;
+		top: 50%;
+		left: 0%;
+		width: 40px;
+		height: 60px;
+		font-size: 0;
+		background: url(../images/block_26/prev.png) no-repeat 4px 3px rgba(0,0,0,.5);
+		transform: translateY(-50%);
+		transition: all .1s ease;
+		border-radius: 5px;
+		z-index: 3;
+		cursor: pointer;
+	}
+	.adaptive_carousel .owl-next {
+	    left: auto;
+	    right: 0%;
+	    background: url(../images/block_26/next.png) no-repeat 6px 3px rgba(0,0,0,.5);
+	}
+	.section_17 .adaptive_carousel .owl-prev{
+		left: -35px;
+	}
+	.section_17 .adaptive_carousel .owl-next{
+		right: -35px;
+	}
+	.adaptive_carousel .owl-dot {
+	    display: inline-block;
+	}
+	.section_17 .adaptive_carousel .owl-dots {
+		position: absolute;
+		top: 100%;
+	}
+	.adaptive_carousel .owl-dot span {
+	    display: inline-block;
+	    width: 15px;
+	    height: 15px;
+	    margin: 10px;
+	    border-radius: 50%;
+	    background: #dddddd;
+	}
+	.adaptive_carousel .owl-dot.active span {
+	    background: #41853f;
+	}
+	.adaptive_carousel .owl-dots {
+		text-align: center;
+		display: block;
+		width: 100%;
+	}
+	.section_20 .article,
+	.section_29 .item {
+		width: 320px;
+		margin: 0 auto;
+		margin-bottom: 10px;
+		box-shadow: none;
+	}
+	.section_22 .article,
+	.section_22 .article:last-of-type {
+		margin-bottom: 10px;
+	}
+	.section_7 .article {
+		width: 320px;
+		margin: 0 auto;
+		margin-bottom: 10px;
 	}
 	.section_27 .flex_row .img_block {
 		margin: 0 auto;

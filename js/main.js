@@ -55,7 +55,8 @@
 	var card = $('.section_5 .card'),
 		tab = $('.section_5 .tab'),
 		img = $('.section_5 .tab_img'),
-		bgBlock = $('.section_5 .bg_block');
+		bgBlock = $('.section_5 .bg_block'),
+		mobileText = $('.section_5 .mobile_text');
 
 	card.on('click', function() {
 
@@ -74,6 +75,13 @@
 					bgBlock.attr('class', 'bg_block img-' + (idx+1) ).fadeIn(200);
 				})
 			});
+		}
+		if(document.body.clientWidth < 992) {
+			// alert('asasd');
+			var txt = $(this).find('.card_text').text();
+
+			mobileText.text(txt);
+
 		}
 	})
 }());
@@ -268,6 +276,19 @@
 	});	
 }());
 
+// Секция 7 слайдер
+(function(){
+	if(document.body.clientWidth < 992) {
+		$('.section_7 .owl-carousel').owlCarousel({
+			center: true,
+			items:1,
+			loop:true,
+			margin:0,	   
+			dots: true,
+			nav: true
+		});
+	}
+}());
 // Секция 19 переворачивание карточек
 (function(){
 	var article = $('.section_19 .article');
@@ -277,6 +298,46 @@
 		$(this).toggleClass('active');
 	});
 
+}());
+// Секция 17 слайдер
+(function(){
+	if(document.body.clientWidth < 992) {
+		$('.section_17 .owl-carousel').owlCarousel({
+			center: true,
+			items:1,
+			loop:true,
+			margin:0,	   
+			dots: true,
+			nav: true
+		});
+	}
+}());
+// Секция 19 слайдер
+(function(){
+	if(document.body.clientWidth < 992) {
+		$('.section_19 .owl-carousel').owlCarousel({
+			center: true,
+			items:1,
+			loop:true,
+			margin:0,	   
+			dots: true,
+			nav: true
+		});
+	}
+}());
+
+// Секция 20 слайдер
+(function(){
+	if(document.body.clientWidth < 992) {
+		$('.section_20 .owl-carousel').owlCarousel({
+			center: true,
+			items:1,
+			loop:true,
+			margin:0,	   
+			dots: true,
+			nav: true
+		});
+	}
 }());
 
 // Секция 21 слайдер
@@ -300,6 +361,19 @@
 	    }
 	});
 }());
+// Секция 22 слайдер
+(function(){
+	if(document.body.clientWidth < 992) {
+		$('.section_22 .owl-carousel').owlCarousel({
+			center: true,
+			items:1,
+			loop:true,
+			margin:0,	   
+			dots: true,
+			nav: true
+		});
+	}
+}());
 
 // Секция 26 слайдер
 (function(){
@@ -314,7 +388,19 @@
 	});
 }());
 
-
+// Секция 29 слайдер
+(function(){
+	if(document.body.clientWidth < 992) {
+		$('.section_29 .owl-carousel').owlCarousel({
+			center: true,
+			items:1,
+			loop:true,
+			margin:0,	   
+			dots: true,
+			nav: true
+		});
+	}
+}());
 // Секция 26 всплывающие окна
 (function(){
 	var a = $('.section_26 .links a'),
@@ -337,24 +423,6 @@
 		$(img).on('load', function(){
 			overlay.add(popupImg).fadeIn(200);
 		})
-		
-		
-
-		// prev.on('click', function(){			
-		// 	counter--;
-		// 	if(counter < 1) counter = count;
-		// 	popupImg.find('img').fadeOut(300, function() {
-		// 		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
-		// 	});
-		// });
-		// next.on('click', function(){
-		// 	counter++;
-		// 	if(counter > count) counter = 1;
-		// 	popupImg.find('img').fadeOut(300, function() {
-		// 		popupImg.find('img').attr('src', 'images/block_26/popup_images/' + id + '/' + counter +'.jpg').delay(100).fadeIn(300);
-		// 	});
-		// });
-
 		return false;
 
 	});
