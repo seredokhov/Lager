@@ -77,7 +77,6 @@
 			});
 		}
 		if(document.body.clientWidth < 992) {
-			// alert('asasd');
 			var txt = $(this).find('.card_text').text();
 
 			mobileText.text(txt);
@@ -141,97 +140,6 @@
 		ul.not($(this).siblings()).slideUp(200);
 		$(this).siblings('ul').slideToggle(200);
 	});
-}());
-
-// Радиокнопки секция 14
-(function(){
-	var radio = $('.section_14 .check'),
-		customRadio = $('.section_14 .custom_check'),
-		panel = $('.section_14 .change_panel'),
-		time = 0;
-
-	customRadio.on('mousedown', function(){
-		var x = event.pageX;
-		var line = $(this).parent().siblings('.line');
-		var width = parseInt($(line[0]).width());		
-		var thisLabel = $(this).parent();
-		var nextLabel = $(this).parent().next().next();
-		var prevLabel = $(this).parent().prev().prev();
-		var pageX = 0;
-
-		thisLabel.find('input').prop('checked', true);
-		thisLabel.find('input').trigger('change');
-		$('.section_14').addClass('move');
-
-
-		$(document).on('mousemove', function() {
-			if (event.pageX > pageX) {				
-				if(event.pageX > (x + width)) {
-					x = event.pageX;					
-					nextLabel.find('input').prop('checked', true);
-					nextLabel.find('input').trigger('change');
-					thisLabel = nextLabel;
-					prevLabel = thisLabel.prev().prev();
-					nextLabel = thisLabel.next().next();
-					if(!nextLabel[0]) {
-						nextLabel = thisLabel;
-					}
-				}
-			} else if (event.pageX < pageX) {
-				if(event.pageX < (x - width)) {
-					x = event.pageX;
-					prevLabel.find('input').prop('checked', true);
-					prevLabel.find('input').trigger('change');
-					thisLabel = prevLabel;
-					prevLabel = thisLabel.prev().prev();
-					nextLabel = thisLabel.next().next();
-					if(!prevLabel[0]) {
-						prevLabel = thisLabel;
-					}
-				}
-			} else {
-				return false;
-			}
-			pageX = event.pageX;
-		});
-	});
-
-	$(document).on('mouseup', function(){
-		$('.section_14').removeClass('move');
-		$(document).off('mousemove');
-	});
-
-	radio.on('change input', function(){
-		var arr = [];
-
-		radio.each(function(i, el){
-			if($(el).prop('checked')) {
-				arr.push(parseInt($(el).val()));				
-			}			
-		});
-
-		switch(arr[0] + '-' + arr[1] ) {
-			case '5-50': time = '8 смен'; break;
-			case '5-75': time = '6 смен'; break;
-			case '5-100': time = '4 смены'; break;
-			case '7-50': time = '11 смен'; break;
-			case '7-75': time = '8 смен'; break;
-			case '7-100': time = '6 смен'; break;
-			case '10-50': time = '15 смен'; break;
-			case '10-75': time = '11 смен'; break;
-			case '10-100': time = '8 смен'; break;
-			case '12-50': time = '18 смен'; break;
-			case '12-75': time = '13 смен'; break;
-			case '12-100': time = '9 смен'; break;
-			case '15-50': time = '22 смены'; break;
-			case '15-75': time = '16 смен'; break;
-			case '15-100': time = '11 смен'; break;
-		}
-		
-		$(this).parent().prevAll().addClass('active');
-		$(this).parent().nextAll().removeClass('active');
-		panel.text(time);
-	})
 }());
 
 
@@ -458,10 +366,29 @@
 $(function(){
 	var media = $('.video_about')[0];
 	var videoBlock = $('.video_background');
-	media.play();
-	$(media).on('ended abort error pause', function(){
-		media.play();
-	});
+
+	if (document.body.clientWidth > 768) {	
+		$(media).on('canplay', function(){
+			videoBlock.fadeIn(200);
+			media.play();
+		});
+		
+
+		$(media).on('abort error', function(){			
+			var img = document.createElement('img');
+			$(img).attr('src', 'images/block_6/bg.jpg');
+			$('.section_6').append($(img));
+			media.remove();
+		});
+		$(media).on('ended', function(){
+			media.play();
+		});
+	} else {
+		var img = document.createElement('img');
+		$(img).attr('src', 'images/block_6/bg.jpg');
+		$('.section_6').append($(img));
+		media.remove();
+	}
 });
 
 
@@ -477,14 +404,16 @@ $(function(){
 		});
 		
 
-		$(media).on('abort error pause', function(){			
-			// videoBlock.fadeOut(200, function(){
-			// 	videoBlock.remove();
-			// });
+		$(media).on('abort error', function(){			
+			videoBlock.fadeOut(200, function(){
+				videoBlock.remove();
+			});
 		});
 		$(media).on('ended', function(){
 			media.play();
 		});
+	} else {
+		media.remove();
 	}
 });
 
@@ -613,4 +542,130 @@ $(function(){
 		});
 
 	}
+});
+
+
+// ПОЛЗУНОК
+
+$( function() {
+
+	var money = 70;
+	var fill = 50;
+	var mBreakpoint = [50,70,90,110,130,150];
+	var fBreakpoint = [50,75,100];
+	var dot = $('.range_dots').find('span');
+
+	// Инициализация
+
+	$( "#range" ).slider({
+		range: "min",
+		value: 70,
+		min: 50,
+		max: 150,
+		slide: function(event, ui){
+			money = ui.value;
+			$( "#amount" ).val( calc(ui.value, fill) );
+			draw($(".money .range_dots"), mBreakpoint, money);
+
+		},
+		change: function(event, ui) {
+			if(mBreakpoint.indexOf( money ) == -1) {
+				money = getFloor(mBreakpoint, ui.value);
+				$( "#range" ).slider( "value", money );
+				$( "#amount" ).val( calc(money, fill) );
+			}
+		}
+	});
+
+	$( "#range-2" ).slider({
+		range: "min",
+		value: 50,
+		min: 50,
+		max: 100,
+		slide: function(event, ui){
+			fill = ui.value;
+			$( "#amount" ).val( calc(money, ui.value) );
+			draw($(".fill .range_dots"), fBreakpoint, fill);
+		},
+		change: function(event, ui) {
+			if(fBreakpoint.indexOf( fill ) == -1) {
+				fill = getFloor(fBreakpoint, ui.value);
+				$( "#range-2" ).slider( "value", fill );
+				$( "#amount" ).val( calc(money, fill) );
+			}
+		}
+	});
+
+
+
+	// События
+	dot.on('click', function() {
+		var step = $(this).index(),
+			steps = $(this).parent().children().length;		
+
+		if ( $(this).parent().parent().hasClass('money') ) {
+			money = mBreakpoint[step];
+			$( "#range" ).slider( "value", money );
+			$( "#amount" ).val( calc(money, fill) );
+			draw($(".money .range_dots"), mBreakpoint, money);
+
+		} else if ( $(this).parent().parent().hasClass('fill') ) {
+			fill = fBreakpoint[step];
+			$( "#range-2" ).slider( "value", fill );
+			$( "#amount" ).val( calc(money, fill) );
+			draw($(".fill .range_dots"), fBreakpoint, fill);
+		}
+	});
+
+
+	// Функции
+	function calc(money, fill) {
+
+
+		var count = Math.ceil( (money / 10) / (9.58 / 7 * fill * 0.01) );
+
+		switch( count ) {
+			case 4: count += ' смены'; break;
+			case 22: count += ' смены'; break;
+			default: count += ' смен'; break;
+		}
+
+
+		return count;
+	}
+
+
+	function getFloor(arr, val) {
+		var changed;
+		for( var i = 0; i < arr.length; i++ ) {
+			if(arr[i] <= val) {
+				changed = arr[i];
+			}
+		}
+		if (changed) {
+			return changed;
+		}
+	}
+
+	function draw(elem, arr, val) {
+		var dots = elem.children();
+		for( var i = 0; i < arr.length; i++) {
+			if( arr[i] <= val ) {
+				console.log(arr[i]);
+
+				dots.eq(i).addClass('passed');
+			} else {
+				dots.eq(i).removeClass('passed');
+			}
+		}
+	}
+
+	// По умолчанию
+	$( "#amount" ).val( calc( money , fill) );
+	draw($(".money .range_dots"), mBreakpoint, money);
+	draw($(".fill .range_dots"), fBreakpoint, fill);
+
+
+	
+
 });

@@ -14,6 +14,9 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	
+	<!-- UI -->
+	<link rel="stylesheet" href="css/jquery-ui.css">
+
 	<!-- OWL -->
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
 
@@ -81,6 +84,7 @@
 			</li>
 		</ul>
 	</div>
+
 	<section class="section_1">
 		<div class="container">
 			<div class="flex-row">
@@ -776,7 +780,7 @@
 							<div class="h3">Инвестиции</div>
 							<div class="small">млн рублей</div>
 						</div>
-						<div class="range">
+<!-- 						<div class="range">
 							<label class="active">
 								<span class="name">5</span>
 								<input name="summa" type="radio" class="check" value="5">
@@ -806,13 +810,36 @@
 								<input name="summa" type="radio" class="check" value="15">
 								<span class="custom_check"></span>
 							</label>
+						</div> -->
+						<div class="range_container money">
+							<div class="range_dots">
+								<span class="dot">
+									<span>5</span>
+								</span>
+								<span class="dot">
+									<span>7</span>
+								</span>
+								<span class="dot">
+									<span>9</span>
+								</span>
+								<span class="dot">
+									<span>11</span>
+								</span>
+								<span class="dot">
+									<span>13</span>
+								</span>
+								<span class="dot">
+									<span>15</span>
+								</span>
+							</div>
+							<div id="range"></div>
 						</div>
 					</div>
 					<div class="range_block">
 						<div class="card_title">
 							<div class="h3">Заполняемость лагеря</div>
 						</div>
-						<div class="range">
+<!-- 						<div class="range">
 							<label class="active">
 								<span class="name">50%</span>
 								<input name="percent" type="radio" class="check" value="50">
@@ -830,13 +857,28 @@
 								<input name="percent" type="radio" class="check" value="100">
 								<span class="custom_check"></span>
 							</label>
+						</div> -->
+						<div class="range_container fill">
+							<div class="range_dots">
+								<span class="dot">
+									<span>50%</span>
+								</span>
+								<span class="dot">
+									<span>75%</span>
+								</span>
+								<span class="dot">
+									<span>100%</span>
+								</span>
+							</div>
+							<div id="range-2"></div>
 						</div>
 					</div>
-		
+
+	
 				</div>
 				<div class="card_footer">
 					<div class="footer_title">Срок окупаемости</div>
-					<div class="btn change_panel">8 смен</div>
+					<input class="btn change_panel" type="text" id="amount" readonly>
 				</div>
 			</div>
 		</div>
@@ -1636,6 +1678,7 @@
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/wow.min.js"></script>
 	<script src="js/parallax.min.js"></script>
