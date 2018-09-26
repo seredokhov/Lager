@@ -1199,7 +1199,7 @@ section .title .text {
 }
 
 .range_container {
-	margin-bottom: 90px;
+	margin: 0 12px 90px;
 	position: relative;
 }
 .range_dots {
