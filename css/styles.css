@@ -797,7 +797,7 @@ section .title .text {
 	margin-bottom: 60px;
 }
 .section_10 .title .text {
-	color: #fff;
+	color: #fff !important;
 	font-size: 50px;
 	text-align: center;
 }
