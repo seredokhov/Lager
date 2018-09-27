@@ -3448,6 +3448,20 @@ footer .social a.tube {
 	.section_19 .back {
 		transition: 0s;
 	}
+	.section_19 .back {
+		background: #fff;
+	}
+	.section_19 .back,
+	.section_19 .article.active .front,
+	.section_19 .article.active .back {
+		transform: none;
+	}
+	.section_19 .article.active .front {
+		z-index: 0;
+	}
+	.section_19 .article.active .back {
+		z-index: 3;
+	}
 	.section_3 .animate_bg {
 		display: none;
 	}
