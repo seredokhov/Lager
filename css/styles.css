@@ -639,13 +639,16 @@ section .title .text {
 	margin-bottom: 40px;
 }
 .section_7 .article_1 .img_block {
-	background: url('../images/block_7/1.jpg') no-repeat;
+	background: url('../images/block_7/1.jpg') no-repeat center;
+	background-size: cover;
 }
 .section_7 .article_2 .img_block {
-	background: url('../images/block_7/2.jpg') no-repeat;
+	background: url('../images/block_7/2.jpg') no-repeat center;
+	background-size: cover;
 }
 .section_7 .article_3 .img_block {
-	background: url('../images/block_7/3.jpg') no-repeat;
+	background: url('../images/block_7/3.jpg') no-repeat center;
+	background-size: cover;
 }
 
 .section_7 .article .text p{
@@ -1666,7 +1669,7 @@ section .title .text {
 }
 .section_19 .front,
 .section_19 .back {
-	padding: 55px 15px;
+	padding: 55px 20px;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -2462,12 +2465,16 @@ section .title .text {
 	margin-top: 40px;
 }
 .section_27 .content_block .icons {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: block;
 	margin-bottom: 60px;
 }
-.section_27 .content_block .icon {
+.section_27 .content_block .icons img {
+	margin: 0;
+	display: block;
+	max-width: 100%;
+	float: none;
+}
+/*.section_27 .content_block .icon {
 	width: 80px;
 	height: 80px;
 	background: url('../images/block_27/icons.png') no-repeat;
@@ -2486,7 +2493,7 @@ section .title .text {
 }
 .section_27 .content_block .icon_5 {
 	background-position: -384px -4px;
-}
+}*/
 /* Секция 28 */
 .section_28 {
 	padding: 100px 0;
@@ -2817,6 +2824,7 @@ footer .social a.tube {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 200;
+	box-shadow: 0px 0px 4.75px 2.25px rgba(0, 0, 0, 0.2);
 }
 .modal_success {
 	display: none;
@@ -2828,6 +2836,7 @@ footer .social a.tube {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #fff;
+	box-shadow: 0px 0px 4.75px 2.25px rgba(0, 0, 0, 0.2);
 }
 .modal_form .flex_row {
 	display: flex;
@@ -2867,11 +2876,14 @@ footer .social a.tube {
 	height: 65px;
 	margin-top: 40px;
 }
+.modal_form .button[disabled="disabled"] {
+	opacity: .5;
+}
 .modal_form .modal_title {
 	color: #3e3e40;
 	font-size: 30px;
 	font-family: 'ProximaNovaBold';
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 .modal .close,
 .modal .close {
@@ -2918,6 +2930,32 @@ footer .social a.tube {
 	font-size: 18px;
 	color: #3e3e40;
 }
+.agree {
+	margin-bottom: 20px;
+}
+.agree label {
+	cursor: pointer;
+}
+.agree input {
+	display: none;
+}
+.agree input:checked + .agree_check::before {
+	content: "\2714";
+	color: green;
+}
+.agree_check {
+	display: inline-block;
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	background: #fff;
+	border: 1px solid #ccc;
+	margin-right: 10px;
+	font-size: 20px;
+
+}
 
 
 /* Медиа запросы */
@@ -2950,6 +2988,9 @@ footer .social a.tube {
 	}
 }
 @media screen and (max-width: 1200px ) {
+	.modal_form .custom_input {
+		height: 40px;
+	}
 	.section_6 .text_block {
 		display: block;
 		position: static;
@@ -3004,7 +3045,7 @@ footer .social a.tube {
 
 	.section_7 .article .img_block,
 	.section_29 .item .img_block {
-		background-size: cover;
+		/*background-size: cover;*/
 	}
 	.section_9 .mab_tabs .map.active img {
 		margin: 0 auto;
@@ -3155,6 +3196,14 @@ footer .social a.tube {
 	}
 }
 @media screen and (max-width: 992px ) {
+	.section_20 .img_block {
+		-webkit-background-size: inherit !important;
+		background-size: inherit !important;
+	}
+	.section_15 .title h2,
+	.section_15 .title .text {
+		margin-bottom: 30px;
+	}
 	.section_3,
 	.section_8,
 	.section_17 .top,
@@ -3656,10 +3705,6 @@ footer .social a.tube {
 		.section_25 .ul_step {
 			width: auto;
 		}
-		.section_27 .content_block .icons {
-			flex-wrap: wrap;
-			justify-content: space-around;
-		}
 		.modal_form form {
 			padding: 20px 15px;
 		}
@@ -3673,6 +3718,12 @@ footer .social a.tube {
 		}
 		.section_20 .article ul {
 			text-align: left;
+		}
+		.section_32 .flex-row {
+			justify-content: space-around;
+		}
+		.section_32 .item {
+			width: 110px;
 		}
 }
 @media screen and (max-width: 400px ){

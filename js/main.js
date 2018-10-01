@@ -423,6 +423,8 @@ $(function(){
 		modal = $('.modal_form'),
 		overlay = $('.modal_overlay'),
 		close = $('.modal_form .close'),
+		agree = $('#agree'),
+		btn = modal.find('.button'),
 		title = [
 			'Станьте партнером<br> «Лагеря настоящих героев»',
 			'Узнайте подробнее о партнерской программе'
@@ -438,6 +440,8 @@ $(function(){
 
 	link.on('click', function(){
 		var type = parseInt($(this).data().type) - 1;
+
+		btn.attr('disabled', 'disabled');
 
 		modal.find('.modal_title').html(title[type]);
 		modal.find('.img_block').css({
@@ -457,7 +461,14 @@ $(function(){
 		$('body').removeClass('no_scroll');
 		$('.modal').fadeOut(200);
 		overlay.fadeOut(200);
-	})
+	});
+	agree.on('change', function() {		
+		if( $(this).prop('checked') ) {
+			btn.removeAttr('disabled');
+		} else {
+			btn.attr('disabled', 'disabled');
+		}
+	});
 }());
 
 
