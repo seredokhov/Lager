@@ -3197,7 +3197,6 @@ footer .social a.tube {
 }
 @media screen and (max-width: 992px ) {
 	.section_20 .img_block {
-		-webkit-background-size: inherit !important;
 		background-size: inherit !important;
 	}
 	.section_15 .title h2,
