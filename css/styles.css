@@ -2577,28 +2577,30 @@ section .title .text {
 .section_29 .item {
 	width: 320px;
 	flex-shrink: 0;
-	box-shadow: 20.179px 55.442px 70px 0px rgba(0, 0, 0, 0.14);
+	/*box-shadow: 20.179px 55.442px 70px 0px rgba(0, 0, 0, 0.14);*/
 }
 .section_29 .item .img_block {
+	display: flex;
+	align-items: flex-end;
 	width: 100%;
-	height: 320px;
+	height: 180px;
 	margin-bottom: 40px;
 }
-.section_29 .item_1 .img_block {
-	background: url('../images/block_29/1.jpg') no-repeat center 0px;
-	background-size: cover;
+/*.section_29 .item_1 .img_block {
+	background: url('../images/block_29/1.png') no-repeat 0px 0px;
+
 }
 .section_29 .item_2 .img_block {
-	background: url('../images/block_29/2.jpg') no-repeat center 0px;
-	background-size: cover;
+	background: url('../images/block_29/2.png') no-repeat 0px 0px;
+
 }
 .section_29 .item_3 .img_block {
-	background: url('../images/block_29/3.jpg') no-repeat center 0px;
-	background-size: cover;
-}
-.section_29 .item .content {
+	background: url('../images/block_29/3.png') no-repeat 0px 0px;
+
+}*/
+/*.section_29 .item .content {
 	padding: 0px 20px 30px;
-}
+}*/
 .section_29 .item .name {
 	font-size: 24px;
 	line-height: 26px;
