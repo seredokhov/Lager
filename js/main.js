@@ -462,6 +462,20 @@ $(function(){
 		$('.modal').fadeOut(200);
 		overlay.fadeOut(200);
 	});
+	// agree.on('change', function() {		
+	// 	if( $(this).prop('checked') ) {
+	// 		btn.removeAttr('disabled');
+	// 	} else {
+	// 		btn.attr('disabled', 'disabled');
+	// 	}
+	// });
+}());
+
+// Активация форм
+$(function() {
+	var agree = $('.agree_checkbox'),
+		btn = agree.parent().parent().parent().find('.button');
+
 	agree.on('change', function() {		
 		if( $(this).prop('checked') ) {
 			btn.removeAttr('disabled');
@@ -469,8 +483,7 @@ $(function(){
 			btn.attr('disabled', 'disabled');
 		}
 	});
-}());
-
+});
 
 //AJAX отправка форм
 (function(){
