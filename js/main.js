@@ -441,7 +441,7 @@ $(function(){
 	link.on('click', function(){
 		var type = parseInt($(this).data().type) - 1;
 
-		btn.attr('disabled', 'disabled');
+		//btn.attr('disabled', 'disabled');
 
 		modal.find('.modal_title').html(title[type]);
 		modal.find('.img_block').css({
@@ -473,14 +473,13 @@ $(function(){
 
 // Активация форм
 $(function() {
-	var agree = $('.agree_checkbox'),
-		btn = agree.parent().parent().parent().find('.button');
+	var agree = $('.agree_checkbox');
 
 	agree.on('change', function() {		
 		if( $(this).prop('checked') ) {
-			btn.removeAttr('disabled');
+			$(this).parent().parent().parent().find('.button').removeAttr('disabled');
 		} else {
-			btn.attr('disabled', 'disabled');
+			$(this).parent().parent().parent().find('.button').attr('disabled', 'disabled');
 		}
 	});
 });
