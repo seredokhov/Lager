@@ -1,1 +1,180 @@
-(function(c){c.fn.viewportChecker=function(m){var e={classToAdd:'visible',classToRemove:'invisible',classToAddForFullView:'full-visible',removeClassAfterAnimation:false,offset:100,repeat:false,invertBottomOffset:true,callbackFunction:function(a,b){},scrollHorizontal:false,scrollBox:window};c.extend(e,m);var k=this,g={height:c(e.scrollBox).height(),width:c(e.scrollBox).width()};this.checkElements=function(){var f,h;if(!e.scrollHorizontal){f=Math.max(c('html').scrollTop(),c('body').scrollTop(),c(window).scrollTop());h=(f+g.height)}else{f=Math.max(c('html').scrollLeft(),c('body').scrollLeft(),c(window).scrollLeft());h=(f+g.width)}k.each(function(){var a=c(this),b={},d={};if(a.data('vp-add-class'))d.classToAdd=a.data('vp-add-class');if(a.data('vp-remove-class'))d.classToRemove=a.data('vp-remove-class');if(a.data('vp-add-class-full-view'))d.classToAddForFullView=a.data('vp-add-class-full-view');if(a.data('vp-keep-add-class'))d.removeClassAfterAnimation=a.data('vp-remove-after-animation');if(a.data('vp-offset'))d.offset=a.data('vp-offset');if(a.data('vp-repeat'))d.repeat=a.data('vp-repeat');if(a.data('vp-scrollHorizontal'))d.scrollHorizontal=a.data('vp-scrollHorizontal');if(a.data('vp-invertBottomOffset'))d.scrollHorizontal=a.data('vp-invertBottomOffset');c.extend(b,e);c.extend(b,d);if(a.data('vp-animated')&&!b.repeat){return}if(String(b.offset).indexOf("%")>0)b.offset=(parseInt(b.offset)/100)*g.height;var i=(!b.scrollHorizontal)?a.offset().top:a.offset().left,n=(!b.scrollHorizontal)?i+a.height():i+a.width();var j=Math.round(i)+b.offset,l=(!b.scrollHorizontal)?j+a.height():j+a.width();if(b.invertBottomOffset)l-=(b.offset*2);if((j<h)&&(l>f)){a.removeClass(b.classToRemove);a.addClass(b.classToAdd);b.callbackFunction(a,"add");if(n<=h&&i>=f)a.addClass(b.classToAddForFullView);else a.removeClass(b.classToAddForFullView);a.data('vp-animated',true);if(b.removeClassAfterAnimation){a.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){a.removeClass(b.classToAdd)})}}else if(a.hasClass(b.classToAdd)&&(b.repeat)){a.removeClass(b.classToAdd+" "+b.classToAddForFullView);b.callbackFunction(a,"remove");a.data('vp-animated',false)}})};if('ontouchstart'in window||'onmsgesturechange'in window){c(document).bind("touchmove MSPointerMove pointermove",this.checkElements)}c(e.scrollBox).bind("load scroll",this.checkElements);c(window).resize(function(a){g={height:c(e.scrollBox).height(),width:c(e.scrollBox).width()};k.checkElements()});this.checkElements();return this}})(jQuery);
+/*
+    The MIT License (MIT)
+
+    Copyright (c) 2014 Dirk Groenen
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+*/
+
+(function($){
+    $.fn.viewportChecker = function(useroptions){
+        // Define options and extend with user
+        var options = {
+            classToAdd: 'visible',
+            classToRemove : 'invisible',
+            classToAddForFullView : 'full-visible',
+            removeClassAfterAnimation: false,
+            offset: 100,
+            repeat: false,
+            invertBottomOffset: true,
+            callbackFunction: function(elem, action){},
+            scrollHorizontal: false,
+            scrollBox: window
+        };
+        $.extend(options, useroptions);
+
+        // Cache the given element and height of the browser
+        var $elem = this,
+            boxSize = {height: $(options.scrollBox).height(), width: $(options.scrollBox).width()};
+
+        /*
+         * Main method that checks the elements and adds or removes the class(es)
+         */
+        this.checkElements = function(){
+            var viewportStart, viewportEnd;
+
+            // Set some vars to check with
+            if (!options.scrollHorizontal){
+                viewportStart = Math.max(
+                    $('html').scrollTop(),
+                    $('body').scrollTop(),
+                    $(window).scrollTop()
+                );
+                viewportEnd = (viewportStart + boxSize.height);
+            }
+            else{
+                viewportStart = Math.max(
+                    $('html').scrollLeft(),
+                    $('body').scrollLeft(),
+                    $(window).scrollLeft()
+                );
+                viewportEnd = (viewportStart + boxSize.width);
+            }
+
+            // Loop through all given dom elements
+            $elem.each(function(){
+                var $obj = $(this),
+                    objOptions = {},
+                    attrOptions = {};
+
+                //  Get any individual attribution data
+                if ($obj.data('vp-add-class'))
+                    attrOptions.classToAdd = $obj.data('vp-add-class');
+                if ($obj.data('vp-remove-class'))
+                    attrOptions.classToRemove = $obj.data('vp-remove-class');
+                if ($obj.data('vp-add-class-full-view'))
+                    attrOptions.classToAddForFullView = $obj.data('vp-add-class-full-view');
+                if ($obj.data('vp-keep-add-class'))
+                    attrOptions.removeClassAfterAnimation = $obj.data('vp-remove-after-animation');
+                if ($obj.data('vp-offset'))
+                    attrOptions.offset = $obj.data('vp-offset');
+                if ($obj.data('vp-repeat'))
+                    attrOptions.repeat = $obj.data('vp-repeat');
+                if ($obj.data('vp-scrollHorizontal'))
+                    attrOptions.scrollHorizontal = $obj.data('vp-scrollHorizontal');
+                if ($obj.data('vp-invertBottomOffset'))
+                    attrOptions.scrollHorizontal = $obj.data('vp-invertBottomOffset');
+
+                // Extend objOptions with data attributes and default options
+                $.extend(objOptions, options);
+                $.extend(objOptions, attrOptions);
+
+                // If class already exists; quit
+                if ($obj.data('vp-animated') && !objOptions.repeat){
+                    return;
+                }
+
+                // Check if the offset is percentage based
+                if (String(objOptions.offset).indexOf("%") > 0)
+                    objOptions.offset = (parseInt(objOptions.offset) / 100) * boxSize.height;
+
+                // Get the raw start and end positions
+                var rawStart = (!objOptions.scrollHorizontal) ? $obj.offset().top : $obj.offset().left,
+                    rawEnd = (!objOptions.scrollHorizontal) ? rawStart + $obj.height() : rawStart + $obj.width();
+
+                // Add the defined offset
+                var elemStart = Math.round( rawStart ) + objOptions.offset,
+                    elemEnd = (!objOptions.scrollHorizontal) ? elemStart + $obj.height() : elemStart + $obj.width();
+
+                if (objOptions.invertBottomOffset)
+                    elemEnd -= (objOptions.offset * 2);
+
+                // Add class if in viewport
+                if ((elemStart < viewportEnd) && (elemEnd > viewportStart)){
+
+                    // Remove class
+                    $obj.removeClass(objOptions.classToRemove);
+                    $obj.addClass(objOptions.classToAdd);
+
+                    // Do the callback function. Callback wil send the jQuery object as parameter
+                    objOptions.callbackFunction($obj, "add");
+
+                    // Check if full element is in view
+                    if (rawEnd <= viewportEnd && rawStart >= viewportStart)
+                        $obj.addClass(objOptions.classToAddForFullView);
+                    else
+                        $obj.removeClass(objOptions.classToAddForFullView);
+
+                    // Set element as already animated
+                    $obj.data('vp-animated', true);
+
+                    if (objOptions.removeClassAfterAnimation) {
+                        $obj.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                            $obj.removeClass(objOptions.classToAdd);
+                        });
+                    }
+
+                // Remove class if not in viewport and repeat is true
+                } else if ($obj.hasClass(objOptions.classToAdd) && (objOptions.repeat)){
+                    $obj.removeClass(objOptions.classToAdd + " " + objOptions.classToAddForFullView);
+
+                    // Do the callback function.
+                    objOptions.callbackFunction($obj, "remove");
+
+                    // Remove already-animated-flag
+                    $obj.data('vp-animated', false);
+                }
+            });
+
+        };
+
+        /**
+         * Binding the correct event listener is still a tricky thing.
+         * People have expierenced sloppy scrolling when both scroll and touch
+         * events are added, but to make sure devices with both scroll and touch
+         * are handles too we always have to add the window.scroll event
+         *
+         * @see  https://github.com/dirkgroenen/jQuery-viewport-checker/issues/25
+         * @see  https://github.com/dirkgroenen/jQuery-viewport-checker/issues/27
+         */
+
+        // Select the correct events
+        if( 'ontouchstart' in window || 'onmsgesturechange' in window ){
+            // Device with touchscreen
+            $(document).bind("touchmove MSPointerMove pointermove", this.checkElements);
+        }
+
+        // Always load on window load
+        $(options.scrollBox).bind("load scroll", this.checkElements);
+
+        // On resize change the height var
+        $(window).resize(function(e){
+            boxSize = {height: $(options.scrollBox).height(), width: $(options.scrollBox).width()};
+            $elem.checkElements();
+        });
+
+        // trigger inital check if elements already visible
+        this.checkElements();
+
+        // Default jquery plugin behaviour
+        return this;
+    };
+})(jQuery);
