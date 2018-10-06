@@ -1220,7 +1220,7 @@ section .title .text {
 }
 
 .range_dots .dot,
-.ui-slider .ui-slider-handle {
+.section_14 .ui-slider .ui-slider-handle {
 	width: 24px;
 	height: 24px;
 	display: block;
@@ -1245,16 +1245,16 @@ section .title .text {
 	background: #00a651;
 	border-color: #00a651;
 }
-.ui-slider .ui-slider-handle {
+.section_14 .ui-slider .ui-slider-handle {
 	border: 3px solid #00a651;
 	top: -7px;
 	margin-left: -12px;
 	outline: none;
 }
-.ui-widget-header {
-    background: #00a651;
+.section_14 .ui-widget-header {
+    background: #00a651 !important;
 }
-.ui-widget.ui-widget-content {
+.section_14 .ui-widget.ui-widget-content {
     border: none;
     background: #e8e8e8;
     cursor: pointer;
