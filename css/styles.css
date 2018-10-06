@@ -32,6 +32,9 @@ input {
 .adaptive_carousel {
 	display: block;
 }
+.underline {
+	text-decoration: underline;
+}
 /* Шапка */
 header  {
 	background: #fff;
@@ -2625,6 +2628,10 @@ section .title .text {
 	line-height: 26px;
 	color: #5a5a5d;
 }
+.section_29 .adaptive_carousel .owl-prev,
+.section_29 .adaptive_carousel .owl-next {
+	top: 30%;
+}
 
 /* Секция 30 */
 .section_30 {
@@ -2915,8 +2922,8 @@ footer .social a.tube {
 	width: 25px;
 	height: 25px;
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 5px;
+	right: 5px;
 	cursor: pointer;
 }
 .modal .close::before,
