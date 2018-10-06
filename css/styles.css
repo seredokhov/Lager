@@ -1099,7 +1099,7 @@ section .title .text {
 }
 
 .section_13 .column.profit {
-	background-color: #fdd82e;
+	background-color: #dcb502;
 }
 
 .section_13 .chart_options ul {
@@ -1144,7 +1144,7 @@ section .title .text {
 	background-color: #b252a6;
 }
 .chart_options .profit::before {
-	background-color: #fdd82e;
+	background-color: #dcb502;
 }
 
 /* Секция 14 */
