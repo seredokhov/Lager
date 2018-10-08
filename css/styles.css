@@ -3694,6 +3694,9 @@ footer .social a.tube {
 	.section_29 .flex_row {
 		margin-bottom: 20px;
 	}
+	.section_12 .ul_list::before {
+		left: 0;
+	}
 }
 
 @media screen and (max-width: 500px ) {
