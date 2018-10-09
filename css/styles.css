@@ -1350,7 +1350,7 @@ section .title .text {
 	font-size: 18px;
 	line-height: 24px;
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
