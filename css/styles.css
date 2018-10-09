@@ -1088,7 +1088,7 @@ section .title .text {
 	background-color: #96c03d;
 }
 .section_13 .column.production {
-	background-color: #ff7f31;
+	background-color: #dcb502;
 }
 .section_13 .column.fot {
 	background-color: #cc2626;
@@ -1099,7 +1099,7 @@ section .title .text {
 }
 
 .section_13 .column.profit {
-	background-color: #dcb502;
+	background-color: #ff7f31;
 }
 
 .section_13 .chart_options ul {
@@ -1135,7 +1135,7 @@ section .title .text {
 	background-color: #38782a;
 }
 .chart_options .production::before {
-	background-color: #ff7f31;
+	background-color: #dcb502;
 }
 .chart_options .fot::before {
 	background-color: #cc2626;
@@ -1143,8 +1143,8 @@ section .title .text {
 .chart_options .admin::before {
 	background-color: #b252a6;
 }
-.chart_options .profit::before {
-	background-color: #dcb502;
+.chart_options .profit::before {	
+	background-color: #ff7f31;
 }
 
 /* Секция 14 */
