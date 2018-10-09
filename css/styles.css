@@ -2148,6 +2148,9 @@ section .title .text {
 	position: relative;
 	flex-shrink: 0;
 }
+.section_25 .step_1 {
+	z-index: 1;	
+}
 .section_25 .container {
 	border-bottom: 1px solid #dcdcdc;
 }
