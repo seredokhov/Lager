@@ -1367,20 +1367,13 @@ section .title .text {
 .section_16 .img_block .description.rotated .back {
     transform: rotateY(360deg);
 }
-/*.section_16 .img_block .description > .block {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 20px 30px;
-	text-align: center;
-	font-size: 18px;
-	line-height: 24px;
-}*/
 .section_16 .img_block .description ul {
 	list-style:  none;
+	width: 100%;
+}
+.section_16 .img_block .description .front > div,
+.section_16 .img_block .description .back > div {
+	width: 100%;
 }
 .section_16 .top_container,
 .section_16 .bottom_container {
