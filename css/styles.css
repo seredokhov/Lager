@@ -2624,9 +2624,9 @@ section .title .text {
 	line-height: 26px;
 	color: #5a5a5d;
 }
-.section_29 .adaptive_carousel .owl-prev,
-.section_29 .adaptive_carousel .owl-next {
-	top: 30%;
+.adaptive_carousel .owl-prev,
+.adaptive_carousel .owl-next {
+	top: 30% !important;
 }
 
 /* Секция 30 */
