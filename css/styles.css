@@ -2586,7 +2586,6 @@ section .title .text {
 .section_29 .item .img_block {
 	display: flex;
 	align-items: flex-end;
-	justify-content: center;
 	width: 100%;
 	min-height: 180px;
 	margin-bottom: 40px;
