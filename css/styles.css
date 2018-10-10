@@ -29,7 +29,7 @@ input {
 .no_scroll {
 	overflow: hidden;
 }
-.adaptive_carousel {
+.section_22 .adaptive_carousel {
 	display: block;
 }
 .underline {
@@ -1088,7 +1088,7 @@ section .title .text {
 	background-color: #96c03d;
 }
 .section_13 .column.production {
-	background-color: #ff7f31;
+	background-color: #dcb502;
 }
 .section_13 .column.fot {
 	background-color: #cc2626;
@@ -1099,7 +1099,7 @@ section .title .text {
 }
 
 .section_13 .column.profit {
-	background-color: #dcb502;
+	background-color: #ff7f31;
 }
 
 .section_13 .chart_options ul {
@@ -1135,7 +1135,7 @@ section .title .text {
 	background-color: #38782a;
 }
 .chart_options .production::before {
-	background-color: #ff7f31;
+	background-color: #dcb502;
 }
 .chart_options .fot::before {
 	background-color: #cc2626;
@@ -1143,8 +1143,8 @@ section .title .text {
 .chart_options .admin::before {
 	background-color: #b252a6;
 }
-.chart_options .profit::before {
-	background-color: #dcb502;
+.chart_options .profit::before {	
+	background-color: #ff7f31;
 }
 
 /* Секция 14 */
@@ -1350,7 +1350,7 @@ section .title .text {
 	font-size: 18px;
 	line-height: 24px;
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
@@ -1367,20 +1367,13 @@ section .title .text {
 .section_16 .img_block .description.rotated .back {
     transform: rotateY(360deg);
 }
-/*.section_16 .img_block .description > .block {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 20px 30px;
-	text-align: center;
-	font-size: 18px;
-	line-height: 24px;
-}*/
 .section_16 .img_block .description ul {
 	list-style:  none;
+	width: 100%;
+}
+.section_16 .img_block .description .front > div,
+.section_16 .img_block .description .back > div {
+	width: 100%;
 }
 .section_16 .top_container,
 .section_16 .bottom_container {
@@ -2148,6 +2141,9 @@ section .title .text {
 	position: relative;
 	flex-shrink: 0;
 }
+.section_25 .step_1 {
+	z-index: 1;	
+}
 .section_25 .container {
 	border-bottom: 1px solid #dcdcdc;
 }
@@ -2590,7 +2586,6 @@ section .title .text {
 .section_29 .item .img_block {
 	display: flex;
 	align-items: flex-end;
-	justify-content: center;
 	width: 100%;
 	min-height: 180px;
 	margin-bottom: 40px;
@@ -2628,9 +2623,9 @@ section .title .text {
 	line-height: 26px;
 	color: #5a5a5d;
 }
-.section_29 .adaptive_carousel .owl-prev,
-.section_29 .adaptive_carousel .owl-next {
-	top: 30%;
+.adaptive_carousel .owl-prev,
+.adaptive_carousel .owl-next {
+	top: 30% !important;
 }
 
 /* Секция 30 */
