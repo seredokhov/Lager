@@ -519,10 +519,10 @@ section .title .text {
 	display: block;
 	width: 50px;
 	height: 30px;
-	background: url('../images/arrows.png') no-repeat -154px -2px;
+	background: url('../images/arrows.png') no-repeat -9px -2px;
 }
 .section_5 .card.active .card_footer::before {
-	background-position: -9px -2px;
+	background-position: -154px -2px;
 }
 .section_5 .tabs_container {
 	margin-top: -70px;
